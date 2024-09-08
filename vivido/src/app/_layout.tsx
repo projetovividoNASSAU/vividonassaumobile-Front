@@ -1,6 +1,6 @@
 import "../global.css"
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Slot } from "expo-router";
+import { Slot, Stack } from "expo-router";
 import {
     useFonts,
     Montserrat_300Light,
@@ -42,7 +42,7 @@ export default function Layout () {
 
     return (
         <GestureHandlerRootView onLayout={onLayoutRootView}>
-            <Slot />
+            {fontsLoaded && <Slot />}
         </GestureHandlerRootView>
     )
 }

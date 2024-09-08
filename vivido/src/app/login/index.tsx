@@ -16,7 +16,7 @@ export default function Login() {
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View  className="flex-1 justify-evenly items-center">
+            <View  className="flex-1 bg-white justify-evenly items-center">
                 <TemplateLogo legend="Entre com sua conta"/>
                 <View className='w-[80%] flex flex-col gap-10 mt-6'>
                     <View>
