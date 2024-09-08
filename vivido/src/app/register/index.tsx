@@ -4,6 +4,7 @@ import useSignupForm from "../../hooks/useSignupForm";
 import Input from "../../components/Input";
 import { ButtonPrimary } from "../../components/Button";
 import Uninassau from "../../components/UninasauLogo";
+import Legand from "../../components/Legand";
 
 export default function Register() {
     const {
@@ -53,7 +54,11 @@ export default function Register() {
                             )}
                         />
                     </View>
-                    <View className="w-[100%] flex items-center justify-center mb-6">
+                    <Legand
+                        textPrimary="Não possui conta?"
+                        textSecundary="Registre-se"
+                    />
+                    <View className="w-[100%] flex items-center justify-center mb-10">
                         <ButtonPrimary
                             onSubmit={handleSubmit(handleOnSubmit)}
                         >

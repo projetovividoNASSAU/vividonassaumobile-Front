@@ -4,6 +4,7 @@ import Uninassau from "../../components/UninasauLogo";
 import Input from "../../components/Input";
 import { ButtonPrimary } from "../../components/Button";
 import useSignInForm from "../../hooks/useSigninForm";
+import Legand from "../../components/Legand";
 
 export default function Login() {
     const {
@@ -17,7 +18,7 @@ export default function Login() {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View  className="flex-1 justify-evenly items-center">
                 <TemplateLogo legend="Entre com sua conta"/>
-                <View className='w-[80%] flex flex-col gap-10'>
+                <View className='w-[80%] flex flex-col gap-10 mt-6'>
                     <View>
                         <Text className="font-subtitle">CPF:</Text>
                         <Controller
@@ -42,7 +43,11 @@ export default function Login() {
                             )}
                         />
                     </View>
-                    <View className="w-[100%] flex items-center justify-center">
+                    <Legand
+                        textPrimary="Já possui conta?"
+                        textSecundary="Entrar"
+                    />
+                    <View className="w-[100%] flex items-center justify-center mb-6">
                         <ButtonPrimary
                             onSubmit={handleSubmit(handleOnSubmit)}
                         >

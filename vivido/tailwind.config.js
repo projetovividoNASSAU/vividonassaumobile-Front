@@ -21,7 +21,6 @@ module.exports = {
         'gray-light': '#d3dce6',
       },
       fontFamily: {
-          primary: ['Montserrat_300Light', 'sans-serif'],
           light: ['Montserrat_400Regular', 'sans-serif'],
           primary: ['Montserrat_500Medium', 'sans-serif'],
           subtitle: ['Montserrat_600SemiBold', 'sans-serif'],
