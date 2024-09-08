@@ -10,8 +10,9 @@ import {
     Montserrat_700Bold
 } from "@expo-google-fonts/montserrat"
 import * as SplashScreen from 'expo-splash-screen'
+import { useCallback, useEffect } from "react";
+import { Text, View } from "react-native";
 
-SplashScreen.preventAutoHideAsync()
 
 export default function Layout () {
     const [fontsLoaded] = useFonts({   
@@ -22,12 +23,25 @@ export default function Layout () {
         Montserrat_700Bold
     })
 
-    if(fontsLoaded) {
-        SplashScreen.hideAsync()
+    useEffect((() => {
+        async function prepare () {
+            await SplashScreen.preventAutoHideAsync()
+        }
+        prepare()
+    }),[])
+
+    const onLayoutRootView = useCallback((async () => {
+        if(fontsLoaded) {
+            await SplashScreen.hideAsync();
+        }
+    }),[fontsLoaded])
+
+    if(!fontsLoaded) {
+        return <View><Text>carregando...</Text></View>
     }
 
     return (
-        <GestureHandlerRootView>
+        <GestureHandlerRootView onLayout={onLayoutRootView}>
             <Slot />
         </GestureHandlerRootView>
     )
