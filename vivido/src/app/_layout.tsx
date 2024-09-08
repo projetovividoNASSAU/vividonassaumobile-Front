@@ -10,7 +10,6 @@ import {
     Montserrat_700Bold
 } from "@expo-google-fonts/montserrat"
 import * as SplashScreen from 'expo-splash-screen'
-import { View,Text } from "react-native";
 
 SplashScreen.preventAutoHideAsync()
 

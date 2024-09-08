@@ -2,20 +2,21 @@ import { View,Text,TouchableWithoutFeedback, Keyboard  } from "react-native";
 import TemplateLogo from "../../components/TemplateLogo";
 import Uninassau from "../../components/UninasauLogo";
 import Input from "../../components/Input";
-import { useForm, Controller } from "react-hook-form";
 import { ButtonPrimary } from "../../components/Button";
+import useSignInForm from "../../hooks/useSigninForm";
 
 export default function Login() {
-    const {control, handleSubmit} = useForm()
-
-    function handleOnSubmit (data: any) {
-        console.log(data)
-    }
+    const {
+        Controller,
+        control,
+        handleOnSubmit,
+        handleSubmit
+    } = useSignInForm()
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-           <View  className="flex-1 justify-evenly items-center">
-                <TemplateLogo legend="Login"/>
+            <View  className="flex-1 justify-evenly items-center">
+                <TemplateLogo legend="Entre com sua conta"/>
                 <View className='w-[80%] flex flex-col gap-10'>
                     <View>
                         <Text className="font-subtitle">CPF:</Text>
