@@ -1,6 +1,7 @@
+//app/_layout.tsx
 import "../global.css"
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Slot, Stack } from "expo-router";
+import { Slot, Stack, useRouter } from "expo-router";
 import {
     useFonts,
     Montserrat_300Light,
@@ -30,11 +31,13 @@ export default function Layout () {
         prepare()
     }),[])
 
+
     const onLayoutRootView = useCallback((async () => {
         if(fontsLoaded) {
             await SplashScreen.hideAsync();
         }
     }),[fontsLoaded])
+    
 
     if(!fontsLoaded) {
         return <View><Text>carregando...</Text></View>
@@ -42,7 +45,8 @@ export default function Layout () {
 
     return (
         <GestureHandlerRootView onLayout={onLayoutRootView}>
-            {fontsLoaded && <Slot />}
+        <Slot/>
+
         </GestureHandlerRootView>
     )
 }
