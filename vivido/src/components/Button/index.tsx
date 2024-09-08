@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
-import { ButtonIconProps, ButtonProps, ButtonTitleProps } from "./button";
+import { ButtonIconProps, ButtonProps, ButtonSubmitProps, ButtonTitleProps } from "./button";
 import { useRouter } from "expo-router";
 
 const variantStyles = {
@@ -17,6 +17,21 @@ function Button({children,to, ...rest}: ButtonProps & TouchableOpacityProps) {
             className={`bg-grayprimary  w-[100%] flex flex-row items-center p-4 rounded-full justify-end`}
             activeOpacity={0.7}
             onPress={() => router.push(to)}
+            {...rest}
+        >
+            {children}
+        </TouchableOpacity>
+    )
+};
+
+
+function ButtonPrimary({children, onSubmit, ...rest}: ButtonSubmitProps & TouchableOpacityProps) {
+    const router = useRouter()
+    return (
+        <TouchableOpacity
+            className={`bg-grayprimary  w-[80%] flex flex-row items-center p-4 rounded-2xl justify-center`}
+            activeOpacity={0.7}
+            onPress={onSubmit}
             {...rest}
         >
             {children}
@@ -47,6 +62,14 @@ function ButtonText ({children}: ButtonTitleProps) {
     )
 }
 
+function ButtonTextPrimary ({children}: ButtonTitleProps) {
+    return (
+        <Text className="text-base text-white font-subtitle">
+            {children}
+        </Text>
+    )
+}
+
 function ButtonTextSecudary ({children}: ButtonTitleProps) {
     return (
         <Text className="text-base text-greensecundary font-subtitle">
@@ -69,4 +92,6 @@ Button.Icon = ButtonIcon
 ButtonSecundary.TextSecudary = ButtonTextSecudary
 ButtonSecundary.Icon = ButtonIcon
 
-export {Button, ButtonSecundary}
+ButtonPrimary.TextPrimary = ButtonTextPrimary
+
+export {Button, ButtonSecundary, ButtonPrimary}

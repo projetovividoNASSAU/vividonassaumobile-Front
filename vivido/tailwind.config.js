@@ -17,7 +17,7 @@ module.exports = {
         'graylight': '#EDEDED',
         'greensecundary': '#929292',
         'gray-dark': '#273444',
-        'gray': '#8492a6',
+        'bluelight': '#DAE9FF',
         'gray-light': '#d3dce6',
       },
       fontFamily: {

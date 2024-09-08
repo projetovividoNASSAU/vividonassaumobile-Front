@@ -6,6 +6,10 @@ export type ButtonProps = {
     to: string
 }
 
+export type ButtonSubmitProps = {
+    children: ReactNode
+    onSubmit:  ((event: GestureResponderEvent) => void) | undefined
+}
 
 
 export type ButtonTitleProps = {
