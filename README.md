@@ -1,6 +1,15 @@
-# Vivido
+
+
+<p align="center">
+   <img  width="100" src='./vivido/assets/adaptive-icon.png'>
+</p>
+
+# Vivido Denúncia
 
 Vivido é um aplicativo móvel desenvolvido com React Native e Expo, projetado para fornecer suporte a pessoas que sofreram algum tipo de violência. A plataforma conecta vítimas a profissionais qualificados e oferece uma forma de fácil acesso para realizar denúncias.
+<p align="center">
+   <img  width="800" src='./vivido/assets/Captura de tela de 2024-09-10 01-05-18.png'>
+</p>
 
 ## Objetivo
 
@@ -33,4 +42,4 @@ O objetivo do **Vivido** é:
 - **Front End:** React Native, Expo.
 - **Back End:** Java Spring.
 
-Para mais informações, entre em contato com [contato@vivido.com](mailto:contato@vivido.com).
+Para mais informações, entre em contato com [projetovivido@outlook.com](mailto:projetovivido@outlook.com).

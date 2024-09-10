@@ -24,12 +24,26 @@ function Button({children,to, ...rest}: ButtonProps & TouchableOpacityProps) {
     )
 };
 
+function ButtonTab({children,to, ...rest}: ButtonProps & TouchableOpacityProps) {
+    const router = useRouter()
+    return (
+        <TouchableOpacity
+            className={`bg-grayprimary  w-fit flex flex-col items-center px-14 py-8 rounded-md justify-center`}
+            activeOpacity={0.7}
+            onPress={() => router.push(to)}
+            {...rest}
+        >
+            {children}
+        </TouchableOpacity>
+    )
+};
+
 
 function ButtonPrimary({children, onSubmit, ...rest}: ButtonSubmitProps & TouchableOpacityProps) {
     const router = useRouter()
     return (
         <TouchableOpacity
-            className={`bg-grayprimary  w-[80%] flex flex-row items-center p-4 rounded-2xl justify-center`}
+            className={`bg-grayprimary  w-[100%] flex flex-row items-center p-4  rounded-2xl justify-center`}
             activeOpacity={0.7}
             onPress={onSubmit}
             {...rest}
@@ -62,6 +76,16 @@ function ButtonText ({children}: ButtonTitleProps) {
     )
 }
 
+
+
+function ButtonTextTab ({children}: ButtonTitleProps) {
+    return (
+        <Text className="text-center text-white font-subtitle">
+            {children}
+        </Text>
+    )
+}
+
 function ButtonTextPrimary ({children}: ButtonTitleProps) {
     return (
         <Text className="text-base text-white font-subtitle">
@@ -86,12 +110,30 @@ function ButtonIcon ({children}: ButtonIconProps) {
     )   
 }
 
+function ButtonIconTab ({children}: ButtonIconProps) {
+    return (
+        <Text>
+            {children}
+        </Text>
+    )   
+}
+
 Button.Text = ButtonText
 Button.Icon = ButtonIcon
+
+
 
 ButtonSecundary.TextSecudary = ButtonTextSecudary
 ButtonSecundary.Icon = ButtonIcon
 
+ButtonTab.ButtonTextTab = ButtonTextTab
+ButtonTab.ButtonIconTab = ButtonIconTab
+
 ButtonPrimary.TextPrimary = ButtonTextPrimary
 
-export {Button, ButtonSecundary, ButtonPrimary}
+export {
+    Button, 
+    ButtonSecundary, 
+    ButtonPrimary, 
+    ButtonTab
+}

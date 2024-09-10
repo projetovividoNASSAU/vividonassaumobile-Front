@@ -13,6 +13,8 @@ import {
 import * as SplashScreen from 'expo-splash-screen'
 import { useCallback, useEffect } from "react";
 import { Text, View } from "react-native";
+import Header from "../components/Header";
+import { StatusBar } from "expo-status-bar";
 
 
 export default function Layout () {
@@ -45,8 +47,8 @@ export default function Layout () {
 
     return (
         <GestureHandlerRootView onLayout={onLayoutRootView}>
-        <Slot/>
-
+            
+            <Slot/>
         </GestureHandlerRootView>
     )
 }
