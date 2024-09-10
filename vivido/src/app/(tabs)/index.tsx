@@ -40,7 +40,7 @@ export default function HomeTab() {
             </ButtonTab>
           </View>
           <View className='w-[90%] my-3'>
-            <Text className='text-start font-bold text-2xl text-grayprimary'>Últimas atividades</Text>
+            <Text className='text-start font-bold text-2xl text-grayprimary'>Últimos Chamados</Text>
           </View>
           <View className='w-[90%]'>
             <Content />
