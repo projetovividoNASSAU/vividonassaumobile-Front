@@ -11,18 +11,18 @@ export default function Content() {
                     23:39 - 12/03/2024
                 </Text>
 
-                <View  className="bg-blue-300 w-fit px-5 rounded-full">
-                    <Text className="text-blue-600 font-bold">
+                <View  className="bg-blue-200 w-fit px-5 rounded-full">
+                    <Text className="text-blue-400 font-bold">
                         Escola Psicologia
                     </Text>
                 </View>
             </View>
             <Text>
                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece 
-                of classical Latin literature from 45 BC, making it over 2000 years old. 
+                of classical Latin literature from 45 BC, making it over 2000 years old.
             </Text>
-            <View  className="bg-orange-400 w-fit px-5 rounded-full">
-                <Text className="text-orange-200 font-bold">Chamada solicitada</Text>
+            <View  className="bg-yellow-400 w-fit px-5 rounded-full">
+                <Text className="text-white font-bold">Chamada solicitada</Text>
             </View>
         </TouchableOpacity>
     )

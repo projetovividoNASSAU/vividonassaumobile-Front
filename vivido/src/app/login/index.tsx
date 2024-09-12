@@ -1,7 +1,7 @@
 import { View,Text,TouchableWithoutFeedback, Keyboard  } from "react-native";
 import TemplateLogo from "../../components/TemplateLogo";
 import Uninassau from "../../components/UninasauLogo";
-import Input from "../../components/Input";
+import {Input} from "../../components/Input";
 import { ButtonPrimary } from "../../components/Button";
 import useSignInForm from "../../hooks/useSigninForm";
 import Legand from "../../components/Legand";

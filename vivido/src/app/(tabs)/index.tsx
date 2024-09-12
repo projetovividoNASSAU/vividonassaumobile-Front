@@ -10,7 +10,7 @@ export default function HomeTab() {
   return (
     <>
         <Header titleHeader={"Bem vindo(a), Bruna!"}/>
-        <View className='bg-white w-screen flex-1 justify-start items-center'>
+        <View className='bg-white w-screen flex-1 justify-between items-center'>
           <View className='w-[90%] my-3'>
             <Text className='text-start font-bold text-2xl text-grayprimary'>Principais tópicos do dia</Text>
           </View>
@@ -39,7 +39,7 @@ export default function HomeTab() {
               </ButtonTab.ButtonTextTab>
             </ButtonTab>
           </View>
-          <View className='w-[90%] my-3'>
+          <View className='w-[90%]'>
             <Text className='text-start font-bold text-2xl text-grayprimary'>Últimos Chamados</Text>
           </View>
           <View className='w-[90%]'>
