@@ -22,7 +22,7 @@ export default function HomeTab() {
             classical Latin literature from 45 BC...'
           />
           <View className='flex flex-row w-[90%] mx-10 items-center justify-between my-10'>
-            <ButtonTab to='/'>
+            <ButtonTab to='/guardian'>
               <ButtonTab.ButtonIconTab>
                   <AntDesign name="heart" size={24} color="white" />
               </ButtonTab.ButtonIconTab>
