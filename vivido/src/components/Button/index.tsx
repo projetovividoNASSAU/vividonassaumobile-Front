@@ -104,7 +104,7 @@ function ButtonTextSecudary ({children}: ButtonTitleProps) {
 
 function ButtonIcon ({children}: ButtonIconProps) {
     return (
-        <Text>
+        <Text className="">
             {children}
         </Text>
     )   
@@ -117,6 +117,42 @@ function ButtonIconTab ({children}: ButtonIconProps) {
         </Text>
     )   
 }
+
+
+
+function ButtonDefault({children,to, ...rest}: ButtonProps & TouchableOpacityProps) {
+    const router = useRouter()
+    return (
+        <TouchableOpacity
+            className={`bg-grayprimary  w-[100%] flex flex-row items-center p-4 gap-8 rounded-md justify-center`}
+            activeOpacity={0.7}
+            onPress={() => router.push(to)}
+            {...rest}
+        >
+            {children}
+        </TouchableOpacity>
+    )
+};
+
+
+function ButtonDefaultIcon ({children}: ButtonIconProps) {
+    return (
+        <Text className="">
+            {children}
+        </Text>
+    )   
+}
+
+function ButtonDefaultText ({children}: ButtonTitleProps) {
+    return (
+        <Text className="text-base text-white font-subtitle">
+            {children}
+        </Text>
+    )
+}
+
+ButtonDefault.Text = ButtonDefaultText
+ButtonDefault.Icon = ButtonDefaultIcon
 
 Button.Text = ButtonText
 Button.Icon = ButtonIcon
@@ -135,5 +171,6 @@ export {
     Button, 
     ButtonSecundary, 
     ButtonPrimary, 
-    ButtonTab
+    ButtonTab,
+    ButtonDefault
 }

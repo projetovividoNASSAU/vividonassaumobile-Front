@@ -1,9 +1,11 @@
 import { TouchableOpacity, View, Text } from "react-native"
 import { OptionsIconProps, OptionsProps, OptionsTitleProps } from "./option"
+import { useRouter } from "expo-router"
 
-function Option({children}:OptionsProps) {
+function Option({to, children}:OptionsProps) {
+    const router = useRouter()
     return (
-        <TouchableOpacity className="w-full flex flex-row items-center justify-between py-4 px-8 border-b-2 border-gray-300">  
+        <TouchableOpacity onPress={() => router.push(to)} className="w-full flex flex-row items-center justify-between py-4 px-2 shadow-md shadow-slate-600">  
             {children}
         </TouchableOpacity>
     )
@@ -11,7 +13,7 @@ function Option({children}:OptionsProps) {
 
 function OptionTitle({children}:OptionsTitleProps) {
     return (
-        <Text className="text-lg font-subtitle">  
+        <Text className="text-md font-subtitle">  
             {children}
         </Text>
     )

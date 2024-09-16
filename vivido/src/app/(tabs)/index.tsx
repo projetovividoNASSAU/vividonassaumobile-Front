@@ -10,7 +10,7 @@ export default function HomeTab() {
   return (
     <>
         <Header titleHeader={"Bem vindo(a), Bruna!"}/>
-        <View className='bg-white w-screen flex-1 justify-start items-center'>
+        <View className='bg-white w-screen flex-1 justify-between items-center'>
           <View className='w-[90%] my-3'>
             <Text className='text-start font-bold text-2xl text-grayprimary'>Principais tópicos do dia</Text>
           </View>
@@ -22,7 +22,7 @@ export default function HomeTab() {
             classical Latin literature from 45 BC...'
           />
           <View className='flex flex-row w-[90%] mx-10 items-center justify-between my-10'>
-            <ButtonTab to='/'>
+            <ButtonTab to='/guardian'>
               <ButtonTab.ButtonIconTab>
                   <AntDesign name="heart" size={24} color="white" />
               </ButtonTab.ButtonIconTab>
@@ -39,7 +39,7 @@ export default function HomeTab() {
               </ButtonTab.ButtonTextTab>
             </ButtonTab>
           </View>
-          <View className='w-[90%] my-3'>
+          <View className='w-[90%]'>
             <Text className='text-start font-bold text-2xl text-grayprimary'>Últimos Chamados</Text>
           </View>
           <View className='w-[90%]'>

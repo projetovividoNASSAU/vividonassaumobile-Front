@@ -5,7 +5,7 @@ import { useRouter } from "expo-router";
 export default function Header({titleHeader, subtitleHeader}: HeaderProps) {
     const router = useRouter()
     return (
-        <View className="w-full bg-white p-4 h-28 flex-row pt-14 justify-between items-center">
+        <View className="w-full bg-white p-4 h-28 flex-row pt-16 justify-between items-center">
             <View>
                 <Text className="font-title text-grayprimary text-xl">
                     {titleHeader}

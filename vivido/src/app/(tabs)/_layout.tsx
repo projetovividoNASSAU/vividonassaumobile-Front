@@ -33,7 +33,7 @@ export default function TabLayout() {
         <Tabs.Screen
             name="panic"
             options={{
-                tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="alarm-light"  size={38} color={color} />,
+                tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="alarm-light"  size={38} color={"#FF5659"}  />,
             }}
         />
         <Tabs.Screen
