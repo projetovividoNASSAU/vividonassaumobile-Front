@@ -2,7 +2,7 @@ import React, { ReactNode } from "react"
 import { PressableProps,TouchableOpacityProps } from "react-native"
 
 export type ButtonProps = {
-    children: ReactNode
+    children?: ReactNode
     to: string
 }
 
@@ -17,5 +17,5 @@ export type ButtonTitleProps = {
 }
 
 export type ButtonIconProps = {
-    children: ReactNode
+    children?: ReactNode
 }

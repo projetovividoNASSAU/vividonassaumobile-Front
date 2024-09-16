@@ -1,9 +1,10 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import Header from "../../components/Header";
 import BackPage from "../../components/BackPage";
 import GuardianTab from "../../components/Guardian";
-import { Button, ButtonDefault } from "../../components/Button";
+import { ButtonDefault } from "../../components/Button";
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { guadiansData } from "../../mocks/mock-guardians-data";
 
 export default function Guadians() {
     return (
@@ -15,19 +16,18 @@ export default function Guadians() {
             <View className="flex-1 items-start mx-4 mb-5">
                 <BackPage />
                 <View className="flex-1  w-full items-center justify-between">
-                    <View className="flex-1  w-full items-center justify-start">
-                        <GuardianTab 
-                            name="Maria Pereira"
-                            type="Instucional"
-                            phone="(00) 90000-0000"
-                        />
-                        <GuardianTab 
-                            name="João pereira"
-                            type="familiar"
-                            phone="(00) 90000-0000"
-                        />
-                    </View>
-                    <ButtonDefault to={""}>
+                    <FlatList 
+                        contentContainerStyle={{ alignItems: 'center', justifyContent: 'flex-start', width: '100%'}}
+                        data={guadiansData}
+                        renderItem={({item}) => (
+                            <GuardianTab 
+                                name={item.name}
+                                type={item.type}
+                                phone={item.phone}
+                            />
+                        )}
+                    />
+                    <ButtonDefault to={"/registerguardians"}>
                         <ButtonDefault.Icon>
                             <AntDesign name="plus" size={24} color="white" />
                         </ButtonDefault.Icon>
