@@ -10,6 +10,16 @@ export function Input({...rest}: TextInputProps) {
     )
 }
 
+export function InputDefault({ placeholder,...rest}: InputProps & TextInputProps) {
+    return (
+        <TextInput
+            {...rest}
+            className="bg-slate-100 w-[100%] px-8 p-4 text-lg rounded-2xl"
+            placeholder={placeholder}
+        />
+    )
+}
+
 export function InputUpdate({ placeholder,...rest}: InputProps & TextInputProps) {
     return (
         <TextInput

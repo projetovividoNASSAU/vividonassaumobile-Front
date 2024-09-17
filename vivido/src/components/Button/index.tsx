@@ -137,7 +137,7 @@ function ButtonDefault({children,to, ...rest}: ButtonProps & TouchableOpacityPro
 
 function ButtonDefaultIcon ({children}: ButtonIconProps) {
     return (
-        <Text className="">
+        <Text>
             {children}
         </Text>
     )   
