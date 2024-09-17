@@ -4,7 +4,7 @@ import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { InputDefault } from "../../components/Input";
-import useRegisterGuardianForm from "../../hooks/useRegisterGuardian";
+import useRegisterGuardianForm from "../../hooks/useRegisterGuardianForm";
 
 export default function RegisterGuardians() {
     const { Controller, control, handleOnSubmit, handleSubmit } =
@@ -12,8 +12,8 @@ export default function RegisterGuardians() {
     return (
     <>
         <Header
-        titleHeader="Registrar Guardiões"
-        subtitleHeader="Registrando seus guardiões, em momentos de urgências você pode acionar-los."
+            titleHeader="Registrar Guardiões"
+            subtitleHeader="Registrando seus guardiões, em momentos de urgências você pode acionar-los."
         />
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View className="flex-1 items-start mx-4 mb-10">

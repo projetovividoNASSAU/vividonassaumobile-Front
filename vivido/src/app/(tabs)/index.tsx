@@ -30,7 +30,7 @@ export default function HomeTab() {
                 Gurdiões
               </ButtonTab.ButtonTextTab>
             </ButtonTab>
-            <ButtonTab to='/'>
+            <ButtonTab to='/calls'>
               <ButtonTab.ButtonIconTab>
                 <MaterialCommunityIcons name="message-text-clock" size={24} color="white" />
               </ButtonTab.ButtonIconTab>
