@@ -15,7 +15,10 @@ import { useCallback, useEffect } from "react";
 import { Text, View } from "react-native";
 import Header from "../components/Header";
 import { StatusBar } from "expo-status-bar";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+
+const queryClient = new QueryClient()
 
 export default function Layout () {
     const [fontsLoaded] = useFonts({   
@@ -42,13 +45,14 @@ export default function Layout () {
     
 
     if(!fontsLoaded) {
-        return <View><Text>carregando...</Text></View>
+        return <View className="flex-1 items-center justify-center"><Text>carregando...</Text></View>
     }
 
     return (
         <GestureHandlerRootView onLayout={onLayoutRootView}>
-            
-            <Slot/>
+            <QueryClientProvider client={queryClient}>
+                <Slot/>
+            </QueryClientProvider>
         </GestureHandlerRootView>
     )
 }

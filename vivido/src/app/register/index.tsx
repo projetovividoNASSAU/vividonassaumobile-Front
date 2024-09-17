@@ -1,7 +1,7 @@
 import { View, Text, TouchableWithoutFeedback, Keyboard  } from "react-native";
 import TemplateLogo from "../../components/TemplateLogo";
 import useSignupForm from "../../hooks/useSignupForm";
-import Input from "../../components/Input";
+import {Input} from "../../components/Input";
 import { ButtonPrimary } from "../../components/Button";
 import Uninassau from "../../components/UninasauLogo";
 import Legand from "../../components/Legand";
@@ -11,7 +11,8 @@ export default function Register() {
         control,
         Controller,
         handleOnSubmit,
-        handleSubmit
+        handleSubmit,
+        isLoading
     } = useSignupForm()
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -19,10 +20,10 @@ export default function Register() {
                 <TemplateLogo legend="Faça sua conta"/>
                 <View className='w-[80%] flex flex-col gap-10'>
                     <View>
-                        <Text className="font-subtitle">CPF:</Text>
+                        <Text className="font-subtitle">Nome:</Text>
                         <Controller
                             control={control}
-                            name="cpf"
+                            name="name"
                             render={({field: {onChange}}) => (
                                 <Input  
                                     onChangeText={onChange}
@@ -34,7 +35,7 @@ export default function Register() {
                         <Text className="font-subtitle">E-mail:</Text>
                         <Controller
                             control={control}
-                            name="email"
+                            name="login"
                             render={({field: {onChange}}) => (
                                 <Input  
                                     onChangeText={onChange}
@@ -55,15 +56,17 @@ export default function Register() {
                         />
                     </View>
                     <Legand
-                        textPrimary="Não possui conta?"
-                        textSecundary="Registre-se"
+                        to="/login"
+                        textPrimary="Já possui conta?"
+                        textSecundary="Entre já"
                     />
                     <View className="w-[100%] flex items-center justify-center mb-10">
                         <ButtonPrimary
+                            disabled={isLoading}
                             onSubmit={handleSubmit(handleOnSubmit)}
                         >
                             <ButtonPrimary.TextPrimary>
-                                Criar conta
+                                {!isLoading ? ' Criar conta': 'Carregando...'}
                             </ButtonPrimary.TextPrimary>
                         </ButtonPrimary>
                     </View>
