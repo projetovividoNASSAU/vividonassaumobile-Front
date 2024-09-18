@@ -19,7 +19,6 @@ export default function useSignupForm() {
             {
                 onSuccess: (response) => {
                     setIsLoading(false)
-                    // console.log(response)
                     router.push('/login')
                 },
                 onError: (error) => {

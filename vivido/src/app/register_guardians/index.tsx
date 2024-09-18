@@ -34,18 +34,6 @@ export default function RegisterGuardians() {
                         </View>
                         <View className="w-full flex flex-col items-center">
                             <View className="w-full">
-                                <Text className="font-subtitle text-xs">Agrupamento:</Text>
-                                <Controller
-                                    control={control}
-                                    name="type"
-                                    render={({ field: { onChange } }) => (
-                                    <InputDefault placeholder="Ex: Familiar, orgãos responsáveis" />
-                                )}
-                                />
-                            </View>
-                        </View>
-                        <View className="w-full flex flex-col items-center">
-                            <View className="w-full">
                                 <Text className="font-subtitle text-xs">Telefone:</Text>
                                 <Controller
                                 control={control}

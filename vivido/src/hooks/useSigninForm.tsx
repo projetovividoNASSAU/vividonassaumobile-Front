@@ -19,7 +19,7 @@ export default function useSignInForm() {
                 onSuccess: (response) => {
                     setIsLoading(false)
                     console.log('form | response data: ', response)
-                    // router.push('/(tabs)')
+                    router.push('/(tabs)')
                 },
                 onError: (error) => {
                     console.log('form | error data: ', error)

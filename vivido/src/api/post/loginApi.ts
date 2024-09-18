@@ -5,7 +5,7 @@ export default async function loginApi(data: SigninProps) {
     try {
         return api.post(
             '/home/login',
-            data
+            data,
         )
     } catch (error) {
         console.error('api | error ao realizar login: ', error)
