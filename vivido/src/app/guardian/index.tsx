@@ -27,7 +27,7 @@ export default function Guadians() {
                             />
                         )}
                     />
-                    <ButtonDefault to={"/registerguardians"}>
+                    <ButtonDefault to={"/register_guardians"}>
                         <ButtonDefault.Icon>
                             <AntDesign name="plus" size={24} color="white" />
                         </ButtonDefault.Icon>

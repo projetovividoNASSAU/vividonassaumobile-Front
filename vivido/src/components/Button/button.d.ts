@@ -3,7 +3,12 @@ import { PressableProps,TouchableOpacityProps } from "react-native"
 
 export type ButtonProps = {
     children?: ReactNode
+    onSubmit?:  ((event: GestureResponderEvent) => void) | undefined
     to: string
+}
+export type ButtonDefaultProps = {
+    children: ReactNode
+    onSubmit?:  ((event: GestureResponderEvent) => void) | undefined
 }
 
 export type ButtonSubmitProps = {

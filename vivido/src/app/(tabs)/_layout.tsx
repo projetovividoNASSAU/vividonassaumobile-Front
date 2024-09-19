@@ -11,7 +11,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: '#3F4056', 
         headerShown: false,
         tabBarStyle: {
-            paddingHorizontal: 32,
+            paddingHorizontal: 48,
             height: 60,
             alignItems: "center",
             justifyContent: "center",
@@ -33,7 +33,7 @@ export default function TabLayout() {
         <Tabs.Screen
             name="panic"
             options={{
-                tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="alarm-light"  size={38} color={"#FF5659"}  />,
+                tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="alarm-light"  size={38} color={color}  />,
             }}
         />
         <Tabs.Screen

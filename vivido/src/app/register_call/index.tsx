@@ -1,13 +1,12 @@
-import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
+import { View, Text, Keyboard, TouchableWithoutFeedback, TouchableOpacity, Pressable } from "react-native";
 import { ButtonDefault } from "../../components/Button";
 import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
 import { InputArea, InputDefault } from "../../components/Input";
-import useRegisterGuardianForm from "../../hooks/useRegisterGuardianForm";
+import {useCreateGuardianForm} from "../../hooks/useCreateGuardianForm";
 
 export default function RegisterCall() {
-    const { Controller, control, handleOnSubmit, handleSubmit } =
-    useRegisterGuardianForm();
+    const { Controller, control, handleOnSubmit } = useCreateGuardianForm()
   return (
     <>
       <Header
@@ -43,7 +42,7 @@ export default function RegisterCall() {
                 </View>
               </View>
             </View>
-            <ButtonDefault to={"/registerguardians"}>
+            <ButtonDefault to="/register">
               <ButtonDefault.Text>Abrir Chamado</ButtonDefault.Text>
             </ButtonDefault>
           </View>

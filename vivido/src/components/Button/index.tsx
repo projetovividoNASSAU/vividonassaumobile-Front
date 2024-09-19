@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
-import { ButtonIconProps, ButtonProps, ButtonSubmitProps, ButtonTitleProps } from "./button";
+import { ButtonIconProps, ButtonProps, ButtonSubmitProps, ButtonDefaultProps,ButtonTitleProps } from "./button";
 import { useRouter } from "expo-router";
 
 const variantStyles = {
@@ -120,13 +120,14 @@ function ButtonIconTab ({children}: ButtonIconProps) {
 
 
 
-function ButtonDefault({children,to, ...rest}: ButtonProps & TouchableOpacityProps) {
+function ButtonDefaultReq({children, onSubmit, ...rest}: ButtonDefaultProps & TouchableOpacityProps) {
     const router = useRouter()
     return (
         <TouchableOpacity
             className={`bg-grayprimary  w-[100%] flex flex-row items-center p-4 gap-8 rounded-md justify-center`}
             activeOpacity={0.7}
-            onPress={() => router.push(to)}
+            onPress={onSubmit}
+            
             {...rest}
         >
             {children}
@@ -134,6 +135,23 @@ function ButtonDefault({children,to, ...rest}: ButtonProps & TouchableOpacityPro
     )
 };
 
+
+function ButtonDefault({children, onSubmit, to, ...rest}: ButtonProps & TouchableOpacityProps) {
+    const router = useRouter()
+    return (
+        <TouchableOpacity
+            className={`bg-grayprimary  w-[100%] flex flex-row items-center p-4 gap-8 rounded-md justify-center`}
+            activeOpacity={0.7}
+            onPress={()=> {
+                router.push(to)
+            }}
+            
+            {...rest}
+        >
+            {children}
+        </TouchableOpacity>
+    )
+};
 
 function ButtonDefaultIcon ({children}: ButtonIconProps) {
     return (
@@ -151,13 +169,15 @@ function ButtonDefaultText ({children}: ButtonTitleProps) {
     )
 }
 
-ButtonDefault.Text = ButtonDefaultText
-ButtonDefault.Icon = ButtonDefaultIcon
 
 Button.Text = ButtonText
 Button.Icon = ButtonIcon
 
+ButtonDefault.Text = ButtonDefaultText
+ButtonDefault.Icon = ButtonDefaultIcon
 
+ButtonDefaultReq.Text = ButtonDefaultText
+ButtonDefaultReq.Icon = ButtonDefaultIcon
 
 ButtonSecundary.TextSecudary = ButtonTextSecudary
 ButtonSecundary.Icon = ButtonIcon
@@ -172,5 +192,6 @@ export {
     ButtonSecundary, 
     ButtonPrimary, 
     ButtonTab,
-    ButtonDefault
+    ButtonDefault,
+    ButtonDefaultReq
 }

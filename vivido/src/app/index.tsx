@@ -19,7 +19,7 @@ export default function App() {
                     <AntDesign name="right" size={20} color="white" />
                 </Button.Icon>
             </Button>
-            <ButtonSecundary to={'/(tabs)'}>
+            <ButtonSecundary to={'/register'}>
                 <ButtonSecundary.TextSecudary>
                     Registrar-se
                 </ButtonSecundary.TextSecudary>
