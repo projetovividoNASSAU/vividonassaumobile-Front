@@ -17,7 +17,7 @@ export default function Profile() {
                 <View className="flex-1 items-start justify-start m-auto mt-2">
                 <BackPage />
                 <View className=" flex flex-col items-center h-[40%] w-[90%] gap-6  justify-start border-t-2 border-gray-300 pt-8">
-                    <Option to="/updateuser">
+                    <Option to="/update_user">
                         <Option.OptionTitle>
                             Conta
                         </Option.OptionTitle>
@@ -25,7 +25,7 @@ export default function Profile() {
                             <AntDesign name="right" size={24} color="#3F4056" />
                         </Option.OptionIcon>
                     </Option>
-                    <Option to="/updateaddress">
+                    <Option to="/update_address">
                         <Option.OptionTitle>
                             Endereço
                         </Option.OptionTitle>

@@ -1,4 +1,4 @@
 export type SigninProps = {
-    cpf: string,
+    login: string,
     password: string
 }

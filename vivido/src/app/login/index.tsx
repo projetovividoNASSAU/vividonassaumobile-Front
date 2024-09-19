@@ -11,7 +11,8 @@ export default function Login() {
         Controller,
         control,
         handleOnSubmit,
-        handleSubmit
+        handleSubmit,
+        isLoading
     } = useSignInForm()
 
     return (
@@ -20,10 +21,10 @@ export default function Login() {
                 <TemplateLogo legend="Entre com sua conta"/>
                 <View className='w-[80%] flex flex-col gap-10 mt-6'>
                     <View>
-                        <Text className="font-subtitle">CPF:</Text>
+                        <Text className="font-subtitle">E-mail:</Text>
                         <Controller
                             control={control}
-                            name="cpf"
+                            name="login"
                             render={({field: {onChange}}) => (
                                 <Input  
                                     onChangeText={onChange}
@@ -44,15 +45,17 @@ export default function Login() {
                         />
                     </View>
                     <Legand
-                        textPrimary="Já possui conta?"
-                        textSecundary="Entrar"
+                        to="register"
+                        textPrimary="Não possui conta?"
+                        textSecundary="Registre-se"
                     />
                     <View className="w-[100%] flex items-center justify-center mb-6">
                         <ButtonPrimary
+                            disabled={isLoading}
                             onSubmit={handleSubmit(handleOnSubmit)}
                         >
                             <ButtonPrimary.TextPrimary>
-                                Entrar
+                                {isLoading ?'Carregando...':'Entrar'}
                             </ButtonPrimary.TextPrimary>
                         </ButtonPrimary>
                     </View>

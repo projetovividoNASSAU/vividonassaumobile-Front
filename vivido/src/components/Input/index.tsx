@@ -29,3 +29,23 @@ export function InputUpdate({ placeholder,...rest}: InputProps & TextInputProps)
         />
     )
 }
+
+export function InputArea({ placeholder,...rest}: InputProps & TextInputProps) {
+    return (
+        <TextInput
+        {...rest}
+        style={{
+          backgroundColor: '#f1f5f9', 
+          width: '100%',
+          padding: 16,
+          fontSize: 15, 
+          borderRadius: 2, 
+          textAlignVertical: 'top', 
+        }}
+        multiline
+        numberOfLines={10}
+        maxLength={60}
+        placeholder={placeholder}
+      />
+    )
+}
