@@ -5,8 +5,15 @@ import GuardianTab from "../../components/Guardian";
 import { ButtonDefault } from "../../components/Button";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { guadiansData } from "../../mocks/mock-guardians-data";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import useGetGuardiansQuery from "../../hooks/queries/useGetGuardiansQuery";
 
 export default function Guadians() {
+    const {token} = useContext(AuthContext)
+
+    const {data,error,isLoading} = useGetGuardiansQuery(token)
+    console.error(error)
     return (
         <>
             <Header
@@ -18,11 +25,11 @@ export default function Guadians() {
                 <View className="flex-1  w-full items-center justify-between">
                     <FlatList 
                         contentContainerStyle={{ alignItems: 'center', justifyContent: 'flex-start', width: '100%'}}
-                        data={guadiansData}
+                        data={data}
                         renderItem={({item}) => (
                             <GuardianTab 
                                 name={item.name}
-                                type={item.type}
+                                type={'familiar'}
                                 phone={item.phone}
                             />
                         )}
