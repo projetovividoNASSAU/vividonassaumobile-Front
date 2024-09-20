@@ -1,6 +1,6 @@
 export type GuardianProps = {
     id?: number
     name: string
-    type: string
+    type?: string
     phone: string
 }
