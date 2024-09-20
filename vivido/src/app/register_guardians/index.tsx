@@ -1,13 +1,22 @@
 import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
-import { ButtonDefault, ButtonDefaultReq } from "../../components/Button";
+import { ButtonDefaultReq } from "../../components/Button";
 import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import { InputDefault } from "../../components/Input";
 import { useCreateGuardianForm } from "../../hooks/useCreateGuardianForm";
+import { useRouter } from "expo-router";
 
 export default function RegisterGuardians() {
+    const router = useRouter();
     const { Controller, control, handleSubmit, handleOnSubmit, isLoading } = useCreateGuardianForm();
+
+    const onSubmit = (data: any) => {
+        handleOnSubmit(data, () => {
+            router.push("/guardian");  
+        }, (error) => {
+            console.error(error);
+        });
+    };
 
     return (
         <>
@@ -45,7 +54,9 @@ export default function RegisterGuardians() {
                                 </View>
                             </View>
                         </View>
-                        <ButtonDefaultReq onPress={handleSubmit(handleOnSubmit)} disabled={isLoading}>
+                        <ButtonDefaultReq 
+                        onPress={handleSubmit(onSubmit)} 
+                        disabled={isLoading}>
                             <ButtonDefaultReq.Text>
                                 {isLoading ? 'Registrando...' : 'Registrar Guardião'}
                             </ButtonDefaultReq.Text>

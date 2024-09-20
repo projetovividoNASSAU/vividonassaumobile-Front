@@ -2,6 +2,7 @@ import { SigninProps } from "../../hooks/types/singin";
 import { api } from "../api";
 
 export default async function loginApi(data: SigninProps) {
+    console.log(data)
     try {
         return api.post(
             '/home/login',
