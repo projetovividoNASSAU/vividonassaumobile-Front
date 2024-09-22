@@ -1,24 +1,36 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { GuardianProps } from "./guardian";
+import { Link } from "expo-router";
 
-export default function GuardianTab({name,phone,type}:GuardianProps) {
-
+export function GuardianTab({name, phone, id,type}:GuardianProps) {
+    const infoGuardian: GuardianProps = {
+        id,
+        name,
+        phone,
+        type
+    }
 
     return (
-        <TouchableOpacity className="w-full ">
+        <Link
+            className="w-full"
+            href={{
+                pathname: '/update_guardian/[data]',
+                params: {data: JSON.stringify(infoGuardian)}  
+            }}
+        >
             <View className="flex flex-row w-full items-center justify-between border-[0.10rem] border-slate-200  py-4 p-3 ">
                 <View>
-                    <Text className="font-subtitle">{name}</Text>
-                    <Text>{type}</Text>
+                    <Text className="font-subtitle">{infoGuardian.name}</Text>
+                    <Text>{infoGuardian.type}</Text>
                 </View>
                 <View>
-                    <Text>{phone}</Text>
-                </View>
+                    <Text>{infoGuardian.phone}</Text>
+                </View> 
                 <TouchableOpacity>
-                    <SimpleLineIcons name="options-vertical" size={24} color="black" />
+                    <Ionicons name="person-remove-sharp" size={24} color="#3F4056" />
                 </TouchableOpacity>
             </View>
-        </TouchableOpacity>
+        </Link>
     )
-};
+}

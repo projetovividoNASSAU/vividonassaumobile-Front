@@ -1,10 +1,9 @@
 import { View, Text, FlatList } from "react-native";
 import Header from "../../components/Header";
 import BackPage from "../../components/BackPage";
-import GuardianTab from "../../components/Guardian";
+import {GuardianTab} from "../../components/Guardian";
 import { ButtonDefault } from "../../components/Button";
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { guadiansData } from "../../mocks/mock-guardians-data";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import useGetGuardiansQuery from "../../hooks/queries/useGetGuardiansQuery";
@@ -12,13 +11,18 @@ import useGetGuardiansQuery from "../../hooks/queries/useGetGuardiansQuery";
 export default function Guadians() {
     const {token} = useContext(AuthContext)
 
-    const {data,error,isLoading} = useGetGuardiansQuery(token)
-    console.error(error)
+    const {data,isLoading} = useGetGuardiansQuery(token)
+    if (isLoading) {
+        return <View className="flex-1  w-full items-center justify-center">
+            <Text>Carregando...</Text>
+        </View>
+    }
+
     return (
         <>
             <Header
-                titleHeader="Guardiões"
-                subtitleHeader="Estes são seus guardiões, em momentos de urgências você pode acionar-los."
+                titleHeader="Atualizar Guardião"
+                subtitleHeader="Atualize as informações de seus Guadiões."
             />
             <View className="flex-1 items-start mx-4 mb-5">
                 <BackPage />
@@ -29,8 +33,8 @@ export default function Guadians() {
                         renderItem={({item}) => (
                             <GuardianTab 
                                 name={item.name}
-                                type={'familiar'}
                                 phone={item.phone}
+                                id={item.id}
                             />
                         )}
                     />
