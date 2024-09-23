@@ -4,7 +4,6 @@ import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
 import { InputArea, InputDefault } from "../../components/Input";
 import { useCreateGuardianForm } from "../../hooks/useCreateGuardianForm";
-import { Select } from "../../components/Select";
 import { useState } from "react";
 
 const data = [
@@ -39,16 +38,6 @@ export default function RegisterCall() {
                     )}
                   />
                 </View>
-
-                {/* Select corrigido */}
-                <Select
-                  label="Institutos"
-                  options={data}
-                  onSelect={(value) => setSelectedValue(value)}  // Garantir que o valor seja passado corretamente
-                  selectedValue={selectedValue}
-                  labelKey="value"  // Corrigido para mapear o valor
-                  valueKey="key"    // Corrigido para mapear a chave
-                />
               </View>
               <View className="w-full flex flex-col items-center">
                 <View className="w-full">

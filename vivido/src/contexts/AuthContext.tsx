@@ -8,9 +8,10 @@ import { useRouter } from "expo-router"
 
 interface AuthContextData {
     token: string | null
-    login: (data: SigninProps, setIsLoading: React.Dispatch<React.SetStateAction<boolean>>) => void
+    login: (data: SigninProps) => void
     logout: () => void
-    isAuthenticated: boolean
+    isAuthenticated: boolean,
+    isLoading:boolean
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -22,7 +23,7 @@ interface AuthProviderProps {
 
 export default function AuthProvider({children}: AuthProviderProps) {
     const [token, setToken] = useState<string | null >(null)
-    // const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
@@ -38,7 +39,7 @@ export default function AuthProvider({children}: AuthProviderProps) {
 
     const loginMutation = useLoginMutation()
 
-    async function login (data: SigninProps, setIsLoading: React.Dispatch<React.SetStateAction<boolean>>) {
+    async function login (data: SigninProps) {
         try {
             
             setIsLoading(true)
@@ -72,7 +73,7 @@ export default function AuthProvider({children}: AuthProviderProps) {
     
     const isAuthenticated = !!token
     return (
-        <AuthContext.Provider value={{token, login, logout, isAuthenticated}}>
+        <AuthContext.Provider value={{isLoading, token, login, logout, isAuthenticated}}>
             {children}
         </AuthContext.Provider>
     )

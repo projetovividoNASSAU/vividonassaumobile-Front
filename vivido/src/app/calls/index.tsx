@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import BackPage from "../../components/BackPage";
 import { ButtonDefault } from "../../components/Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import Call from "../../components/Call";
+import { Call } from "../../components/Call";
 export default function Calls() {
   return (
     <>
