@@ -1,12 +1,22 @@
-import { View, Text, Keyboard, TouchableWithoutFeedback, TouchableOpacity, Pressable } from "react-native";
+import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { ButtonDefault } from "../../components/Button";
 import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
 import { InputArea, InputDefault } from "../../components/Input";
-import {useCreateGuardianForm} from "../../hooks/useCreateGuardianForm";
+import { useCreateGuardianForm } from "../../hooks/useCreateGuardianForm";
+import { Select } from "../../components/Select";
+import { useState } from "react";
+
+const data = [
+  { key: '1', value: 'CPJ' },
+  { key: '2', value: 'PSICOLOGIA' },
+];
 
 export default function RegisterCall() {
-    const { Controller, control, handleOnSubmit } = useCreateGuardianForm()
+  // Definir o tipo do selectedValue como string | number
+  const [selectedValue, setSelectedValue] = useState<string | number>('');
+  const { Controller, control, handleOnSubmit } = useCreateGuardianForm();
+
   return (
     <>
       <Header
@@ -29,6 +39,16 @@ export default function RegisterCall() {
                     )}
                   />
                 </View>
+
+                {/* Select corrigido */}
+                <Select
+                  label="Institutos"
+                  options={data}
+                  onSelect={(value) => setSelectedValue(value)}  // Garantir que o valor seja passado corretamente
+                  selectedValue={selectedValue}
+                  labelKey="value"  // Corrigido para mapear o valor
+                  valueKey="key"    // Corrigido para mapear a chave
+                />
               </View>
               <View className="w-full flex flex-col items-center">
                 <View className="w-full">
@@ -36,7 +56,7 @@ export default function RegisterCall() {
                     control={control}
                     name="phone"
                     render={({ field: { onChange } }) => (
-                      <InputArea placeholder="Detalhes a causa ..." />
+                      <InputArea placeholder="Detalhes da causa ..." />
                     )}
                   />
                 </View>

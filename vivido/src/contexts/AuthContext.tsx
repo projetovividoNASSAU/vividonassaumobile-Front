@@ -8,10 +8,9 @@ import { useRouter } from "expo-router"
 
 interface AuthContextData {
     token: string | null
-    login: (data: SigninProps) => void
+    login: (data: SigninProps, setIsLoading: React.Dispatch<React.SetStateAction<boolean>>) => void
     logout: () => void
     isAuthenticated: boolean
-    isLoading: boolean
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -23,7 +22,7 @@ interface AuthProviderProps {
 
 export default function AuthProvider({children}: AuthProviderProps) {
     const [token, setToken] = useState<string | null >(null)
-    const [isLoading, setIsLoading] = useState(false)
+    // const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
@@ -39,24 +38,23 @@ export default function AuthProvider({children}: AuthProviderProps) {
 
     const loginMutation = useLoginMutation()
 
-    async function login (data: SigninProps) {
-        setIsLoading(true)
+    async function login (data: SigninProps, setIsLoading: React.Dispatch<React.SetStateAction<boolean>>) {
         try {
-
+            
+            setIsLoading(true)
             loginMutation.mutate(data, {
                 onSuccess: async (response) => {
                     const accessToken = response?.data?.token
                     if (accessToken) {
                         await AsyncStorage.setItem('@authToken', accessToken)
+                        setIsLoading(false)
                         setToken(accessToken)
                         console.log('deu certo: ', response?.data)
                         router.push('/(tabs)')
                     }
-                    setIsLoading(false)
                 },
                 onError: (error) => {
                     console.error('Login Error: ', error)
-                    setIsLoading(false);
                 }
                 })
         } catch (error) {
@@ -74,7 +72,7 @@ export default function AuthProvider({children}: AuthProviderProps) {
     
     const isAuthenticated = !!token
     return (
-        <AuthContext.Provider value={{token, login, logout, isAuthenticated, isLoading}}>
+        <AuthContext.Provider value={{token, login, logout, isAuthenticated}}>
             {children}
         </AuthContext.Provider>
     )
