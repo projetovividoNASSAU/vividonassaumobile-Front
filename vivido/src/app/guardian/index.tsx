@@ -26,9 +26,9 @@ export default function Guadians() {
             />
             <View className="flex-1 items-start mx-4 mb-5">
                 <BackPage />
-                <View className="flex-1  w-full items-center justify-between">
+                <View className="flex-1 w-full justify-between">
                     <FlatList 
-                        contentContainerStyle={{ alignItems: 'center', justifyContent: 'flex-start', width: '100%'}}
+                        contentContainerStyle={{ justifyContent: 'center', width: '100%'}}
                         data={data}
                         renderItem={({item}) => (
                             <GuardianTab 

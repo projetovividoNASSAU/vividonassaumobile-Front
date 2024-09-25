@@ -6,11 +6,6 @@ export async function updateGuardianApi(data: GuardianProps, token: string | nul
         const response  = await api.put(
             '/guardian/edit/guardian',
                 data,
-            {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            }
         )
         return response
     } catch (error) {

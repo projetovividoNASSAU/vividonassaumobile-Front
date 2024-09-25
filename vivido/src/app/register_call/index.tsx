@@ -1,12 +1,21 @@
-import { View, Text, Keyboard, TouchableWithoutFeedback, TouchableOpacity, Pressable } from "react-native";
-import { ButtonDefault } from "../../components/Button";
+import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
+import { ButtonDefault, ButtonDefaultReq } from "../../components/Button";
 import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
 import { InputArea, InputDefault } from "../../components/Input";
-import {useCreateGuardianForm} from "../../hooks/useCreateGuardianForm";
+import { useCreateGuardianForm } from "../../hooks/useCreateGuardianForm";
+import { useState } from "react";
+import useCreateCallForm from "../../hooks/useCreateCallForm";
+
+const data = [
+  { key: '1', value: 'CPJ' },
+  { key: '2', value: 'PSICOLOGIA' },
+];
 
 export default function RegisterCall() {
-    const { Controller, control, handleOnSubmit } = useCreateGuardianForm()
+  const [selectedValue, setSelectedValue] = useState<string | number>('');
+  const { Controller, control, handleOnSubmit, handleSubmit,isLoading } = useCreateCallForm();
+
   return (
     <>
       <Header
@@ -23,9 +32,19 @@ export default function RegisterCall() {
                   <Text className="font-subtitle text-sm pb-2">Título da causa:</Text>
                   <Controller
                     control={control}
-                    name="name"
+                    name="title"
                     render={({ field: { onChange } }) => (
-                      <InputDefault placeholder="Relate um titulo da causa ..." />
+                      <InputDefault placeholder="Relate um titulo da causa ..." onChangeText={onChange} />
+                    )}
+                  />
+                </View>
+                <View className="w-full mt-2">
+                  <Text className="font-subtitle text-sm pb-2">Orgãos:</Text>
+                  <Controller
+                    control={control}
+                    name="type"
+                    render={({ field: { onChange } }) => (
+                      <InputDefault placeholder="Relate um titulo da causa ..." onChangeText={onChange} />
                     )}
                   />
                 </View>
@@ -34,17 +53,21 @@ export default function RegisterCall() {
                 <View className="w-full">
                   <Controller
                     control={control}
-                    name="phone"
+                    name="descricao"
                     render={({ field: { onChange } }) => (
-                      <InputArea placeholder="Detalhes a causa ..." />
+                      <InputArea placeholder="Detalhes da causa ..." onChangeText={onChange} />
                     )}
                   />
                 </View>
               </View>
             </View>
-            <ButtonDefault to="/register">
-              <ButtonDefault.Text>Abrir Chamado</ButtonDefault.Text>
-            </ButtonDefault>
+            <ButtonDefaultReq 
+                onPress={handleSubmit(handleOnSubmit)} 
+                disabled={isLoading}>
+                <ButtonDefaultReq.Text>
+                  {isLoading ? 'Chamado em andamento...' : 'Abrir chamado'}
+                </ButtonDefaultReq.Text>
+            </ButtonDefaultReq>
           </View>
         </View>
       </TouchableWithoutFeedback>

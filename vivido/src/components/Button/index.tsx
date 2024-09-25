@@ -169,12 +169,89 @@ function ButtonDefaultText ({children}: ButtonTitleProps) {
     )
 }
 
+function ButtonOpenNewCall({children, onSubmit, to, ...rest}: ButtonProps & TouchableOpacityProps) {
+    const router = useRouter()
+    return (
+        <TouchableOpacity
+            className={`bg-grayprimary  w-[100%] flex flex-row items-center p-4 gap-8 rounded-md justify-center`}
+            activeOpacity={0.7}
+            onPress={()=> {
+                router.push(to)
+            }}
+            
+            {...rest}
+        >
+            {children}
+        </TouchableOpacity>
+    )
+};
+
+function ButtonOpenNewCallIcon ({children}: ButtonIconProps) {
+    return (
+        <Text>
+            {children}
+        </Text>
+    )   
+}
+
+function ButtonOpenNewCallText ({children}: ButtonTitleProps) {
+    return (
+        <Text className="text-base text-white font-subtitle">
+            {children}
+        </Text>
+    )
+}
+
+
+function ButtonPanic({children, onSubmit, to, ...rest}: ButtonProps & TouchableOpacityProps) {
+    const router = useRouter()
+    return (
+        <TouchableOpacity
+            className={`bg-redcherry  w-[100%] flex flex-row items-center justify-center p-4 gap-3 rounded-full`}
+            activeOpacity={0.7}
+            onPress={()=> {
+                router.push(to)
+            }}
+            
+            {...rest}
+        >
+            {children}
+        </TouchableOpacity>
+    )
+};
+
+
+function ButtonPanicText ({children}: ButtonTitleProps) {
+    return (
+        <Text className="text-base text-white  font-subtitle">
+            {children}
+        </Text>
+    )
+}
+
+
+function ButtonPanicIcon ({children}: ButtonIconProps) {
+    return (
+        <Text>
+            {children}
+        </Text>
+    )   
+}
+
+
+ButtonPanic.Text = ButtonPanicText
+ButtonPanic.Icon = ButtonPanicIcon
 
 Button.Text = ButtonText
 Button.Icon = ButtonIcon
 
 ButtonDefault.Text = ButtonDefaultText
 ButtonDefault.Icon = ButtonDefaultIcon
+
+
+ButtonOpenNewCall.Text = ButtonOpenNewCallText
+// ButtonOpenNewCall.Icon = ButtonOpenNewCallIcon
+
 
 ButtonDefaultReq.Text = ButtonDefaultText
 ButtonDefaultReq.Icon = ButtonDefaultIcon
@@ -193,5 +270,7 @@ export {
     ButtonPrimary, 
     ButtonTab,
     ButtonDefault,
-    ButtonDefaultReq
+    ButtonDefaultReq,
+    ButtonPanic,
+    ButtonOpenNewCall
 }
