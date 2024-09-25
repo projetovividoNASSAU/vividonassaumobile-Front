@@ -1,10 +1,20 @@
-import { View, TouchableOpacity, Text } from "react-native";
+import { View, TouchableOpacity, Text, FlatList } from "react-native";
 import Header from "../../components/Header";
 import BackPage from "../../components/BackPage";
 import { ButtonDefault } from "../../components/Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Call } from "../../components/Call";
+import useGetCallsQuery from "../../hooks/queries/useGetCallsQuery";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 export default function Calls() {
+  const {token} = useContext(AuthContext)
+  const {data, error} = useGetCallsQuery(token)
+
+  useEffect(()=>{
+    console.log(data)
+  }, [])
+
   return (
     <>
       <Header
@@ -14,19 +24,17 @@ export default function Calls() {
       <View className="flex-1 items-start mx-4 mb-5">
         <BackPage />
         <View className="flex-1  w-full items-center justify-between">
-          <Call
-            title="Minha vizinha está sofrendo violência doméstica"
-            description="
-              É um fato conhecido de todos que um leitor se distrairá 
-              com o conteúdo de texto legível de uma página quando estiver 
-              examinando sua diagramação. A vantagem de usar Lorem Ipsum é 
-              que ele tem uma distribuição normal de letras, ao contrário 
-              de Conteúdo aqui, conteúdo aqui, fazendo com que ele tenha 
-              uma aparência similar a de um texto legível.
-              "
-            status={true}
-            createdAt="Postada: 14:35:45 12/02/2032" 
-            type={""}            
+          <FlatList
+            data={data}
+            renderItem={({item})=> (
+              <Call
+                title={item.title}
+                description={item.decricao}
+                createdAt={item.time}
+                type={item.type}
+                status={true}
+              />
+            )}
           />
           <ButtonDefault to={"/register_call"}>
             <ButtonDefault.Icon>
