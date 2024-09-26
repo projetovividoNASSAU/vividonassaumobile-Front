@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { GuardianProps } from "./guardian";
 import { Link } from "expo-router";
-// import useDeleteGuardianMutation from "../../hooks/mutations/usedeleteGuardianMutation";
+import useDeleteGuardianMutation from "../../hooks/mutations/useDeleteGuardianMutation";
 
 export function GuardianTab({name, phone, id,type}:GuardianProps) {
     const infoGuardian: GuardianProps = {
@@ -11,21 +11,21 @@ export function GuardianTab({name, phone, id,type}:GuardianProps) {
         phone,
         type
     }
-    // const deleteGuardianMutation = useDeleteGuardianMutation()
+    const deleteGuardianMutation = useDeleteGuardianMutation()
     
-    // const handleOnDelete = () => {
-    //     deleteGuardianMutation.mutate(
-    //         id,
-    //         {
-    //             onSuccess: () => {
-    //                 console.log('deu certo')
-    //             }, 
-    //             onError: () => {
-    //                 console.error('deuerro')
-    //             }
-    //         }
-    //     )
-    // }
+    const handleOnDelete = () => {
+        deleteGuardianMutation.mutate(
+            id,
+            {
+                onSuccess: () => {
+                    console.log("excluido com sucesso")
+                }, 
+                onError: () => {
+                    console.error('deuerro')
+                }
+            }
+        )
+    }
 
 
     return (
@@ -45,7 +45,7 @@ export function GuardianTab({name, phone, id,type}:GuardianProps) {
                     <Text>{infoGuardian.phone}</Text>
                 </View> 
                 <TouchableOpacity 
-                    // onPress={handleOnDelete}
+                    onPress={handleOnDelete}
                 >
                     <Ionicons name="person-remove-sharp" size={24} color="#3F4056" />
                 </TouchableOpacity>
