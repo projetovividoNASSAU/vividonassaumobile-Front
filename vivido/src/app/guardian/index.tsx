@@ -22,8 +22,8 @@ export default function Guadians() {
     return (
         <>
             <Header
-                titleHeader="Atualizar Guardião"
-                subtitleHeader="Atualize as informações de seus Guadiões."
+                titleHeader="Guardiões"
+                subtitleHeader="Vizualize as informações de seus Guadiões."
             />
             <View className="flex-1 items-start mx-4 mb-5">
                 <BackPage />

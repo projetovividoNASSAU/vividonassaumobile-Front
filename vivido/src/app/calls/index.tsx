@@ -7,13 +7,14 @@ import { Call } from "../../components/Call";
 import useGetCallsQuery from "../../hooks/queries/useGetCallsQuery";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Link } from "expo-router";
 export default function Calls() {
   const {token} = useContext(AuthContext)
-  const {data, error} = useGetCallsQuery(token)
+  const {data} = useGetCallsQuery(token)
 
-  useEffect(()=>{
+  // useEffect(()=>{
     console.log(data)
-  }, [])
+  // }, [])
 
   return (
     <>
@@ -27,13 +28,21 @@ export default function Calls() {
           <FlatList
             data={data}
             renderItem={({item})=> (
-              <Call
-                title={item.title}
-                description={item.decricao}
-                createdAt={item.time}
-                type={item.type}
-                status={true}
-              />
+              <Link
+                className="!w-[100%]"
+                href={{
+                  pathname: '/call_detail/[data]',
+                  params: {data: JSON.stringify(item)}
+                }}
+              >
+                <Call
+                  title={item.title}
+                  description={item.decricao}
+                  createdAt={item.time}
+                  type={item.type}
+                  status={true}
+                />
+              </Link>
             )}
           />
           <ButtonDefault to={"/register_call"}>
