@@ -7,6 +7,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import useGetGuardiansQuery from "../../hooks/queries/useGetGuardiansQuery";
+import { Link } from "expo-router";
 
 export default function Guadians() {
     const {token} = useContext(AuthContext)
@@ -21,21 +22,29 @@ export default function Guadians() {
     return (
         <>
             <Header
-                titleHeader="Atualizar Guardião"
-                subtitleHeader="Atualize as informações de seus Guadiões."
+                titleHeader="Guardiões"
+                subtitleHeader="Vizualize as informações de seus Guadiões."
             />
             <View className="flex-1 items-start mx-4 mb-5">
                 <BackPage />
                 <View className="flex-1 w-full justify-between">
                     <FlatList 
-                        contentContainerStyle={{ justifyContent: 'center', width: '100%'}}
+                        contentContainerStyle={{ justifyContent: 'center', width: '100%', alignItems: 'center'}}
                         data={data}
                         renderItem={({item}) => (
-                            <GuardianTab 
-                                name={item.name}
-                                phone={item.phone}
-                                id={item.id}
-                            />
+                            <Link
+                                className="!w-[100%]"
+                                href={{
+                                    pathname: '/update_guardian/[data]',
+                                    params: {data: JSON.stringify(item)}  
+                                }}
+                            >
+                                <GuardianTab 
+                                    name={item.name}
+                                    phone={item.phone}
+                                    id={item.id}
+                                />
+                            </Link>
                         )}
                     />
                     <ButtonDefault to={"/register_guardians"}>

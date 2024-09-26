@@ -8,18 +8,17 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import useUpdateGuardianForm from "../../hooks/useUpdateGuardianForm";
 
 export default function UpdateGuardians() {
-    const route = useRouter();
     const { data } = useLocalSearchParams();
     const info = typeof data === 'string' ? JSON.parse(data) : null;
 
-    // Hook do formulário com dados existentes
+    
     const { control, handleSubmit, handleOnSubmit, isLoading, reset, Controller, setValue } = useUpdateGuardianForm(info);
 
     useEffect(() => {
         if (info) {
             reset({
-                name: info.name || '',  // Define o valor inicial de 'name'
-                phone: info.phone || ''  // Define o valor inicial de 'phone'
+                name: info.name || '', 
+                phone: info.phone || '' 
             });
         }
     }, []);
