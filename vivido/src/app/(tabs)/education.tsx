@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function EducationTab() {
   return (
     <View style={styles.container}>
-      <Text>Tab [Home|Settings]</Text>
+      <Text>Em constução...</Text>
     </View>
   );
 }

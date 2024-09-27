@@ -1,25 +1,25 @@
-import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
-import { ButtonDefaultReq } from "../../components/Button";
-import BackPage from "../../components/BackPage";
+import { View, Text, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Header from "../../components/Header";
+import BackPage from "../../components/BackPage";
 import { InputDefault } from "../../components/Input";
 import { useEffect } from "react";
-import { useLocalSearchParams, useRouter } from "expo-router";
-import useUpdateGuardianForm from "../../hooks/useUpdateGuardianForm";
+import { useLocalSearchParams } from "expo-router";
+import { ButtonDefaultReq } from "../../components/Button";
+import { useUpdateCallForm } from "../../hooks/useUpdateCallForm";
+import { CallProps } from "../../hooks/types/call";
 
-export default function UpdateGuardians() {
+export default function UpdateCall() {
     const { data } = useLocalSearchParams();
     const info = typeof data === 'string' ? JSON.parse(data) : null;
 
-    
-    const { control, handleSubmit, handleOnSubmit, isLoading, reset, Controller } = useUpdateGuardianForm(info);
+
+    const { control, handleSubmit, handleOnSubmit, isLoading, reset, Controller } = useUpdateCallForm(info);
 
     useEffect(() => {
         if (info) {
             reset({
-                id: info.id,
-                name: info.name || '', 
-                phone: info.phone || '' 
+                title: info.title || '', 
+                descricao: info.decricao || ''
             });
         }
     }, []);
@@ -27,8 +27,8 @@ export default function UpdateGuardians() {
     return (
         <>
             <Header
-                titleHeader="Atualizar Guardião"
-                subtitleHeader="Atualize as informações dos seus guardiões em caso de emergência."
+                titleHeader="Atualizar Chamado"
+                subtitleHeader="Atualize as informações dos seus chamados"
             />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View className="flex-1 items-start mx-4 mb-10">
@@ -37,14 +37,14 @@ export default function UpdateGuardians() {
                         <View className="flex-1 w-full items-center border-t-2 border-gray-300 py-5 gap-10 justify-start">
                             <View className="w-full flex flex-col items-center">
                                 <View className="w-full">
-                                    <Text className="font-subtitle text-xs">Nome:</Text>
+                                    <Text className="font-subtitle text-xs">titulo:</Text>
                                     <Controller
                                         control={control}
-                                        name="name"
-                                        defaultValue={info?.name || ''}
+                                        name="title"
+                                        defaultValue={info?.title || ''}
                                         render={({ field: { onChange, value } }) => (
                                             <InputDefault
-                                                placeholder="Nome do Guardião"
+                                                placeholder="Título do chamado"
                                                 onChangeText={onChange}
                                                 value={value}
                                             />
@@ -54,14 +54,14 @@ export default function UpdateGuardians() {
                             </View>
                             <View className="w-full flex flex-col items-center">
                                 <View className="w-full">
-                                    <Text className="font-subtitle text-xs">Telefone:</Text>
+                                    <Text className="font-subtitle text-xs">descrição:</Text>
                                     <Controller
                                         control={control}
-                                        name="phone"
-                                        defaultValue={info?.phone || ''}
+                                        name="descricao"
+                                        defaultValue={info?.decricao || ''}
                                         render={({ field: { onChange, value } }) => (
                                             <InputDefault
-                                                placeholder="Telefone do Guardião"
+                                                placeholder="Relate a ocorrência"
                                                 onChangeText={onChange}
                                                 value={value}
                                             />
@@ -75,7 +75,7 @@ export default function UpdateGuardians() {
                             disabled={isLoading}
                         >
                             <ButtonDefaultReq.Text>
-                                {isLoading ? 'Atualizando...' : 'Atualizar Guardião'}
+                                {isLoading ? 'Salvando chamada...' : 'Atualizar Chamada'}
                             </ButtonDefaultReq.Text>
                         </ButtonDefaultReq>
                     </View>
@@ -83,4 +83,4 @@ export default function UpdateGuardians() {
             </TouchableWithoutFeedback>
         </>
     );
-}
+};
