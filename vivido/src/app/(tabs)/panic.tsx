@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Linking } from "react-native";
 import Header from "../../components/Header";
 import { ButtonOpenNewCall, ButtonPanic } from "../../components/Button";
 import Foundation from '@expo/vector-icons/Foundation';
@@ -7,7 +7,8 @@ import { useState } from "react";
 
 export default function PanicTab() {
   const [isVisibled, setIsVisibled] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+
+
 
   return (
     <>
@@ -19,8 +20,6 @@ export default function PanicTab() {
       <ModalOptions 
         isVisibled={isVisibled} 
         setIsVisibled={setIsVisibled}
-        isActive={isActive} 
-        setIsActive={setIsActive}
       />
 
       <View className="flex-1 bg-white items-center justify-center">

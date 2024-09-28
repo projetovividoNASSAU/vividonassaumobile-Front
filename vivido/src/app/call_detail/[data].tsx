@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
 import { View, Text, Pressable } from "react-native";
 import Header from "../../components/Header";
@@ -67,12 +67,17 @@ export default function CallDetail() {
                     <FontAwesome5 name="trash-alt" size={24} className="!text-gray-600 " />
                     <Text className="text-gray-600 font-bold">Remover</Text>
                 </Pressable>
-                <Pressable
+                <Link
+                    href={{
+                        pathname: '/update_call/[data]',
+                        params: {data: JSON.stringify(info)}
+
+                    }}
                     className="bg-redcherry p-3 rounded-lg px-10 flex flex-row items-center"
                 >
-                    <Feather name="edit" className="!text-white" size={24} />
-                    <Text className="text-white font-bold">Editar</Text>
-                </Pressable>
+                        <Feather name="edit" className="!text-white" size={24} />
+                        <Text className="text-white font-bold">Editar</Text>
+                </Link>
             </View>
         </>
     )

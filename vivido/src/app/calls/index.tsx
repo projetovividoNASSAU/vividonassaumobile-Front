@@ -12,9 +12,6 @@ export default function Calls() {
   const {token} = useContext(AuthContext)
   const {data} = useGetCallsQuery(token)
 
-  // useEffect(()=>{
-    console.log(data)
-  // }, [])
 
   return (
     <>
