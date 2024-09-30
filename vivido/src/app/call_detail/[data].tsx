@@ -34,27 +34,31 @@ export default function CallDetail() {
                 subtitleHeader="Todas informações do chamado realizado"
             />
             <View className="flex-1 flex-col items-start w-full mx-4 gap-4">
-                <BackPage />
-                <View className="w-full flex gap-3">
-                    <Text className="text-grayprimary font-subtitle">Pricipais informações</Text>
-                    <View className="flex flex-row gap-6">
-                        <Text>Endereço: {info.adress}</Text>
-                    </View>
-                    <View className="w-full items-start flex">
-                        <Text className=" text-center rounded-full ">funcionário responsável: {info.nameFun}</Text>
-                    </View>
-                    <Text>Contato: {info.phone}</Text>
+                <View className="mt-8">
+                    <BackPage />
                 </View>
-                <View className="w-full flex gap-3 border-spacing-2 border-t-[.05rem] border-slate-400 py-4">
-                    <View className="flex flex-row gap-6">
-                        <Text>Postada: 14:35:45 12/02/2032</Text>
-                        <Text className="bg-yellow-400 text-center rounded-full px-6">Chamada pendente</Text>
+                <View className="flex flex-col h-[80%] justify-between">
+                    <View className="w-full flex gap-3 border-spacing-2">
+                        <Text className="text-grayprimary font-subtitle text-2xl">{info.title}</Text>
+                        <View className="flex flex-row gap-6">
+                            <Text>Postada: 14:35:45 12/02/2032</Text>
+                            <Text className="bg-yellow-400 text-center rounded-full px-6">Chamada pendente</Text>
+                        </View>
+                        <View className="w-full items-start flex">
+                            <Text className="bg-blue-100 text-center rounded-full px-10">NPJ</Text> 
+                        </View>
+                        <Text className="text-xl">{info.decricao}</Text>
                     </View>
-                    <View className="w-full items-start flex">
-                        <Text className="bg-blue-100 text-center rounded-full px-10">NPJ</Text> 
+                    <View className="w-full flex gap-3">
+                        <Text className="text-grayprimary font-subtitle">Principais informações:</Text>
+                        <View className="flex flex-row gap-6">
+                            <Text>Endereço: {info.adress}</Text>
+                        </View>
+                        <View className="w-full items-start flex">
+                            <Text className=" text-center rounded-full ">funcionário responsável: {info.nameFun}</Text>
+                        </View>
+                        <Text>Contato: {info.phone}</Text>
                     </View>
-                    <Text className="text-grayprimary font-subtitle text-base">{info.title}</Text>
-                    <Text>{info.decricao}</Text>
                 </View>
             </View>
             <View

@@ -1,7 +1,9 @@
-import { Modal, View, Text, Pressable, Linking } from "react-native";
+import { Modal, View, Text, Pressable, Alert, Linking } from "react-native";
 import { ToggleButton } from "../ToogleButton";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useState } from "react";
+// import * as Linking from 'expo-linking';
+
 
 interface ModalOptionsProps {
     isVisibled: boolean;
@@ -9,34 +11,29 @@ interface ModalOptionsProps {
 }
 
 export default function ModalOptions({ isVisibled, setIsVisibled }: ModalOptionsProps) {
-    const [isActiveGuardians, setIsActiveGuardians] = useState(false);
+    const [isActiveGuardians, setIsActiveGuardians] = useState(false)
     const [isActiveGovernment, setIsActiveGovernment] = useState(false)
-
+    const phoneNumber = '1234567890'
     
     const handleNumberTel = async () => {
-        const phoneNumber = 'tel:190'
-        try {
-            const supported = await Linking.canOpenURL(phoneNumber)
-            if(supported) {
-                console.log('abrindo chamada')
-                await Linking.openURL(phoneNumber)
-            } else {
-                console.log('este telefône não suporta ligações telefônicas')
-            }
-        } catch (error) {
-            console.error('Erro ao tentar abrir a chamada:', error);
+        const supported = await Linking.canOpenURL(`tel:${phoneNumber}`)
+        if (supported) {
+            console.log(supported)
+            Linking.openURL(`tel:${phoneNumber}`)
+        } else {
+            Alert.alert("Erro", "Seu dispositivo não pode fazer chamadas de telefone.")
         }
     }
 
     const handleCall = () => {
-        console.log('Acionando chamado');
+        console.log('Acionando chamado')
         if (isActiveGovernment) {
-            handleNumberTel();
-            console.log('Alertando órgãos do governo...');
+            handleNumberTel()
+            console.log('Alertando órgãos do governo...')
         } else if (isActiveGuardians) {
-            console.log('Alertando guardiões...');
+            console.log('Alertando guardiões...')
         }
-    };
+    }
     
     return (
     <Modal
