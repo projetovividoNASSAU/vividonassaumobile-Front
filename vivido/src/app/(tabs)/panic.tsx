@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function PanicTab() {
   const [isVisibled, setIsVisibled] = useState(false);
 
-
+  
 
   return (
     <>
