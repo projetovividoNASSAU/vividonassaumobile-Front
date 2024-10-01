@@ -2,7 +2,7 @@ import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { ButtonDefault, ButtonDefaultReq } from "../../components/Button";
 import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
-import { InputArea, InputDefault } from "../../components/Input";
+import { InputArea, InputDefault, InputUpdate } from "../../components/Input";
 import { useCreateGuardianForm } from "../../hooks/useCreateGuardianForm";
 import { useState } from "react";
 import useCreateCallForm from "../../hooks/useCreateCallForm";
@@ -26,7 +26,7 @@ export default function RegisterCall() {
         <View className="flex-1 items-start mx-4 mb-10">
           <BackPage />
           <View className="flex-1  w-full items-center justify-between">
-            <View className="flex-1 w-full items-center border-t-2 border-gray-300 py-5 gap-10 justify-start">
+            <View className="flex-1 w-full items-center  py-5 gap-10 justify-start">
               <View className="w-full flex flex-col items-center">
                 <View className="w-full">
                   <Text className="font-subtitle text-sm pb-2">Título da causa:</Text>
@@ -55,7 +55,7 @@ export default function RegisterCall() {
                     control={control}
                     name="descricao"
                     render={({ field: { onChange } }) => (
-                      <InputArea placeholder="Detalhes da causa ..." onChangeText={onChange} />
+                      <InputUpdate placeholder="Detalhes da causa ..." onChangeText={onChange} />
                     )}
                   />
                 </View>

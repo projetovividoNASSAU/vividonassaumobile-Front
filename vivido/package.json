@@ -10,19 +10,19 @@
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.2.3",
-    "@react-native-async-storage/async-storage": "^2.0.0",
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@tanstack/react-query": "^5.56.2",
     "axios": "^1.7.7",
-    "expo": "~51.0.28",
+    "expo": "~51.0.35",
     "expo-constants": "~16.0.2",
     "expo-font": "~12.0.10",
     "expo-linear-gradient": "~13.0.2",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.23",
     "expo-screen-orientation": "~7.0.5",
-    "expo-splash-screen": "~0.27.5",
+    "expo-splash-screen": "~0.27.6",
     "expo-status-bar": "~1.12.1",
-    "expo-updates": "~0.25.24",
+    "expo-updates": "~0.25.25",
     "nativewind": "^4.0.1",
     "react": "18.2.0",
     "react-hook-form": "^7.53.0",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
-    "typescript": "^5.1.3"
+    "typescript": "~5.3.3"
   },
   "private": true
 }

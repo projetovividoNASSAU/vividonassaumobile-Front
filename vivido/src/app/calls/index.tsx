@@ -5,32 +5,41 @@ import { ButtonDefault } from "../../components/Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Call } from "../../components/Call";
 import useGetCallsQuery from "../../hooks/queries/useGetCallsQuery";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Link } from "expo-router";
-export default function Calls() {
-  const {token} = useContext(AuthContext)
-  const {data} = useGetCallsQuery(token)
+import { useRouter } from "expo-router";
 
+export default function Calls() {
+  const { token } = useContext(AuthContext);
+  const { data } = useGetCallsQuery(token);
+  const router = useRouter();
 
   return (
     <>
       <Header
         titleHeader="Chamados"
-        subtitleHeader=" Acompanhe o progresso de seus chamados"
+        subtitleHeader="Acompanhe o progresso de seus chamados"
       />
-      <View className="flex-1 items-start mx-4 mb-5">
+      <View className="w-ful flex items-start my-4">
         <BackPage />
-        <View className="flex-1  w-full items-center justify-between">
+      </View>
+      <View className="flex-1 items-start mb-5">
+        <View className="w-full flex-1 items-center justify-center ">
           <FlatList
             data={data}
-            renderItem={({item})=> (
-              <Link
-                className="!w-[100%]"
-                href={{
-                  pathname: '/call_detail/[data]',
-                  params: {data: JSON.stringify(item)}
-                }}
+            contentContainerStyle={{
+              alignItems: 'center',
+              width: '100%',        
+            }}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                className="w-[90%] mb-4"  
+                onPress={() =>
+                  router.push({
+                    pathname: "/call_detail/[data]",
+                    params: { data: JSON.stringify(item) },
+                  })
+                }
               >
                 <Call
                   title={item.title}
@@ -39,15 +48,20 @@ export default function Calls() {
                   type={item.type}
                   status={true}
                 />
-              </Link>
+              </TouchableOpacity>
             )}
+            keyExtractor={(item) => item.id}
           />
-          <ButtonDefault to={"/register_call"}>
-            <ButtonDefault.Icon>
-              <AntDesign name="plus" size={24} color="white" />
-            </ButtonDefault.Icon>
-            <ButtonDefault.Text>Novo Chamado</ButtonDefault.Text>
-          </ButtonDefault>
+
+        
+          <View className="w-[90%] mx-10 items-center justify-center">
+            <ButtonDefault to={"/register_call"}>
+              <ButtonDefault.Icon>
+                <AntDesign name="plus" size={24} color="white" />
+              </ButtonDefault.Icon>
+              <ButtonDefault.Text>Novo Chamado</ButtonDefault.Text>
+            </ButtonDefault>
+          </View>
         </View>
       </View>
     </>

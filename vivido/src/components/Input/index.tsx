@@ -6,7 +6,7 @@ export function Input({...rest}: TextInputProps) {
     return (
         <TextInput
             {...rest}
-            className="bg-zinc-100 w-[100%] px-4 p-4 text-lg border-zinc-300 border rounded-2xl"
+            className="bg-sky-100 w-[100%] px-4 p-4 text-lg  rounded-2xl"
         />
     )
 }

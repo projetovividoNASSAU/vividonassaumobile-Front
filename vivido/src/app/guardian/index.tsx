@@ -13,6 +13,7 @@ export default function Guadians() {
     const {token} = useContext(AuthContext)
 
     const {data,isLoading} = useGetGuardiansQuery(token)
+    
     if (isLoading) {
         return <View className="flex-1  w-full items-center justify-center">
             <Text>Carregando...</Text>

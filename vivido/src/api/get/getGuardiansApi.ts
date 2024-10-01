@@ -4,7 +4,11 @@ import { api } from "../api"
 export async function getGuardiansApi(token: string|null): Promise<GuardianProps[]> {
     console.log(token)
     try {
-        const response = await api.get<GuardianProps[]>('/guardian/get-guardians');
+        const response = await api.get<GuardianProps[]>('/guardian/get-guardians', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         return response?.data; 
     } catch (error) {
         console.error(error)
