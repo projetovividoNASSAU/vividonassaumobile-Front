@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "react-native-linear-gradient": "^2.8.3"
-  },
-  "devDependencies": {
-    "@types/react-native-linear-gradient": "^2.3.1"
-  }
-}

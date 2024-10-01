@@ -1,9 +1,8 @@
-import { Modal, View, Text, Pressable, Alert, Linking } from "react-native";
+import { Modal, View, Text, Pressable, Alert } from "react-native";
 import { ToggleButton } from "../ToogleButton";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useState } from "react";
-// import * as Linking from 'expo-linking';
-
+import * as Linking from 'expo-linking'
 
 interface ModalOptionsProps {
     isVisibled: boolean;
@@ -13,13 +12,13 @@ interface ModalOptionsProps {
 export default function ModalOptions({ isVisibled, setIsVisibled }: ModalOptionsProps) {
     const [isActiveGuardians, setIsActiveGuardians] = useState(false)
     const [isActiveGovernment, setIsActiveGovernment] = useState(false)
-    const phoneNumber = '1234567890'
+    const phone_URL = 'tel:190'
     
     const handleNumberTel = async () => {
-        const supported = await Linking.canOpenURL(`tel:${phoneNumber}`)
+        const supported = await Linking.canOpenURL(phone_URL)
         if (supported) {
             console.log(supported)
-            Linking.openURL(`tel:${phoneNumber}`)
+            await Linking.openURL(phone_URL)
         } else {
             Alert.alert("Erro", "Seu dispositivo não pode fazer chamadas de telefone.")
         }
