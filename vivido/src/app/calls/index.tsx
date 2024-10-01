@@ -23,7 +23,7 @@ export default function Calls() {
       <View className="w-ful flex items-start my-4">
         <BackPage />
       </View>
-      <View className="flex-1 items-startmb-5">
+      <View className="flex-1 items-start mb-5">
         <View className="w-full flex-1 items-center justify-center ">
           <FlatList
             data={data}

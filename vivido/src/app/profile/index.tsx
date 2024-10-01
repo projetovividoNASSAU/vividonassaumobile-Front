@@ -16,7 +16,7 @@ export default function Profile() {
             />
                 <View className="flex-1 items-start justify-start m-auto mt-2">
                 <BackPage />
-                <View className=" flex flex-col items-center h-[40%] w-[90%] gap-6  justify-start border-t-2 border-gray-300 pt-8">
+                <View className=" flex flex-col items-center h-[40%] w-[90%] gap-6  justify-start pt-8">
                     <Option to="/update_user">
                         <Option.OptionTitle>
                             Conta

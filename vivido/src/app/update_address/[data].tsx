@@ -2,16 +2,21 @@ import { View, Text } from "react-native"
 import Header from "../../components/Header"
 import BackPage from "../../components/BackPage"
 import { ButtonPrimary } from "../../components/Button"
-import { InputUpdate } from "../../components/Input"
-import {useAddressUpdateForm} from "../../hooks/useUpdateForm"
+import { InputDefault } from "../../components/Input"
+import { useAddressUpdateForm } from "../../hooks/useUpdateForm"
+import { useLocalSearchParams } from "expo-router"
 
 export default function AddressUpdate() {
+    const { data } = useLocalSearchParams();
+    const info = typeof data === 'string' ? JSON.parse(data) : null;
+
     const {
         Controller,
         control,
         handleOnSubmit,
         handleSubmit
-    } = useAddressUpdateForm()
+    } = useAddressUpdateForm(info)
+
     return (
         <>
         <Header 
@@ -21,7 +26,7 @@ export default function AddressUpdate() {
         <View className="flex-1 items-start justify-start px-3">
         <BackPage />
             <View className="w-full h-[80%] flex flex-col justify-between">
-                <View className="w-full flex flex-col items-center h-[40%] gap-6  justify-between border-t-2 border-gray-300 pt-8">
+                <View className="w-full flex flex-col items-center h-[40%] gap-6  justify-between  pt-8">
                     <View className="w-full flex flex-col items-center">
                         <View className="w-full">
                             <Text className="font-subtitle text-xs">Cep:</Text>
@@ -29,7 +34,7 @@ export default function AddressUpdate() {
                                 control={control}
                                 name="cep"
                                 render={({field: {onChange}}) => (
-                                    <InputUpdate
+                                    <InputDefault
                                         placeholder="0000000-00"
                                         onChangeText={onChange}
                                     />
@@ -39,27 +44,12 @@ export default function AddressUpdate() {
                     </View>
                     <View className="w-full flex flex-col items-center">
                         <View className="w-full">
-                            <Text className="font-subtitle text-xs">Bairro:</Text>
+                            <Text className="font-subtitle text-xs">Telefone:</Text>
                             <Controller
                                 control={control}
-                                name="bairro"
+                                name="phone"
                                 render={({field: {onChange}}) => (
-                                    <InputUpdate
-                                        placeholder="Parque Piaui"
-                                        onChangeText={onChange}
-                                    />
-                                )}
-                            />
-                        </View>
-                    </View>
-                    <View className="w-full flex flex-col items-center">
-                        <View className="w-full">
-                            <Text className="font-subtitle text-xs">Cidade:</Text>
-                            <Controller
-                                control={control}
-                                name="cidade"
-                                render={({field: {onChange}}) => (
-                                    <InputUpdate
+                                    <InputDefault
                                         placeholder="Teresina"
                                         onChangeText={onChange}
                                     />
@@ -69,28 +59,13 @@ export default function AddressUpdate() {
                     </View>
                     <View className="w-full flex flex-col items-center">
                         <View className="w-full">
-                            <Text className="font-subtitle text-xs">Estado:</Text>
+                            <Text className="font-subtitle text-xs">Endereço:</Text>
                             <Controller
                                 control={control}
-                                name="estado"
+                                name="adress"
                                 render={({field: {onChange}}) => (
-                                    <InputUpdate
-                                        placeholder="PI"
-                                        onChangeText={onChange}
-                                    />
-                                )}
-                            />
-                        </View>
-                    </View>
-                    <View className="w-full flex flex-col items-center">
-                        <View className="w-full">
-                            <Text className="font-subtitle text-xs">Complemento:</Text>
-                            <Controller
-                                control={control}
-                                name="complemento"
-                                render={({field: {onChange}}) => (
-                                    <InputUpdate
-                                        placeholder="example: Rua maria rui avenida 20"
+                                    <InputDefault
+                                        placeholder="Ex: Rua X, cidade, estado"
                                         onChangeText={onChange}
                                     />
                                 )}

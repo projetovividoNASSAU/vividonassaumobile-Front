@@ -1,5 +1,9 @@
 import {Controller, useForm} from 'react-hook-form'
-import { UpdatedAddressProps, UpdatedUserProps } from './types/updateuser'
+import {  UpdatedUserProps } from './types/updateuser'
+import { useCallback, useContext, useState } from 'react'
+import { AddressProps } from './types/address'
+import useUpdateAddressMutation from './mutations/useUpdateAddressMutation'
+import { AuthContext } from '../contexts/AuthContext'
 
 export function useUserUpdateForm() {
     const { control, handleSubmit } = useForm<UpdatedUserProps>()
@@ -16,17 +20,38 @@ export function useUserUpdateForm() {
     }
 };
 
-export function useAddressUpdateForm() {
-    const { control, handleSubmit } = useForm<UpdatedAddressProps>()
+export function useAddressUpdateForm(data: AddressProps) {
+    const [isLoading, setIsLoading] = useState(false)
+    const {control, register, handleSubmit,reset, watch } = useForm<AddressProps>({
+        defaultValues: data || {}
+    })
 
-    const handleOnSubmit = (data: UpdatedAddressProps) => {
-        console.log(data)
-    }
+    const updateAddressMutation = useUpdateAddressMutation()
+
+    const handleOnSubmit = useCallback((data: AddressProps) => {
+        setIsLoading(true)
+        updateAddressMutation.mutate(
+            data,
+            {
+                onSuccess: () => {
+                    setIsLoading(false)
+                    console.log("deu certo")
+                },
+                onError: () => {
+                    console.log('deu errado')
+                }
+            }
+        )
+    }, [])
 
     return {
-        Controller,
+        isLoading,
         control,
+        register,
+        handleOnSubmit,
         handleSubmit,
-        handleOnSubmit
+        reset,
+        watch,
+        Controller
     }
 };

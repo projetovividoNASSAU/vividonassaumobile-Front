@@ -10,7 +10,7 @@ export default function EducationTab() {
         titleHeader='Artigos'
         subtitleHeader='Leia mais sobre o assunto'
       />
-      <View className='flex-1 w-full justify-center items-center bg-white'>
+      <View className='flex-1 w-full  bg-white'>
         <FlatList 
           contentContainerStyle={{width: '100%', display: "flex", justifyContent:"center", alignItems: "center"}}
           data={articleData}
@@ -22,7 +22,6 @@ export default function EducationTab() {
             />
           )}
         />
-        {/* <Article/> */}
       </View>
     </>
   );

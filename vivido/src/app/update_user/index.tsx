@@ -2,8 +2,8 @@ import { View, Text } from "react-native"
 import Header from "../../components/Header"
 import BackPage from "../../components/BackPage"
 import {useUserUpdateForm} from "../../hooks/useUpdateForm"
-import { Input, InputUpdate } from "../../components/Input"
-import { Button, ButtonPrimary } from "../../components/Button"
+import { InputDefault } from "../../components/Input"
+import { ButtonPrimary } from "../../components/Button"
 export default function UserUpdate () {
     const {
         Controller,
@@ -20,7 +20,7 @@ export default function UserUpdate () {
             <View className="flex-1 items-start justify-start px-3">
             <BackPage />
                 <View className="w-full h-[80%] flex flex-col justify-between">
-                    <View className="w-full flex flex-col items-center h-[40%] gap-6  justify-between border-t-2 border-gray-300 pt-8">
+                    <View className="w-full flex flex-col items-center h-[40%] gap-6  justify-between-300 pt-8">
                         <View className="w-full flex flex-col items-center">
                             <View className="w-full">
                                 <Text className="font-subtitle text-xs">Nome:</Text>
@@ -28,7 +28,7 @@ export default function UserUpdate () {
                                     control={control}
                                     name="name"
                                     render={({field: {onChange}}) => (
-                                        <InputUpdate
+                                        <InputDefault
                                             placeholder="Bruna Fernandes"
                                             onChangeText={onChange}
                                         />
@@ -43,7 +43,7 @@ export default function UserUpdate () {
                                     control={control}
                                     name="email"
                                     render={({field: {onChange}}) => (
-                                        <InputUpdate
+                                        <InputDefault
                                             placeholder="example@gmail.com"
                                             onChangeText={onChange}
                                         />
@@ -58,7 +58,7 @@ export default function UserUpdate () {
                                     control={control}
                                     name="telefone"
                                     render={({field: {onChange}}) => (
-                                        <InputUpdate
+                                        <InputDefault
                                             placeholder="(00)00000-0000"
                                             onChangeText={onChange}
                                         />
@@ -73,7 +73,7 @@ export default function UserUpdate () {
                                     control={control}
                                     name="password"
                                     render={({field: {onChange}}) => (
-                                        <InputUpdate
+                                        <InputDefault
                                             placeholder="********"
                                             onChangeText={onChange}
                                         />
