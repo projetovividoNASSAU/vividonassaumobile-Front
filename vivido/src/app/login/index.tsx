@@ -19,9 +19,9 @@ export default function Login() {
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View  className="flex-1 bg-white justify-evenly items-center">
-                <TemplateLogo legend="Entre com sua conta"/>
-                <View className='w-[80%] flex flex-col gap-10 mt-10'>
+            <View  className="flex-1 bg-white justify-center items-center mt-24">
+                <TemplateLogo legend="Conecte-se"/>
+                <View className='w-[80%] flex flex-col gap-10 m-14'>
                     <View>
                         <Text className="font-subtitle">E-mail:</Text>
                         <Controller
