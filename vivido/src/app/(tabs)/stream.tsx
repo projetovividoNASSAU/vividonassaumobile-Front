@@ -1,18 +1,22 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import VideoIframe from '../../components/Video';
+import { videoData } from '../../mocks/mock-videos-data';
+import Header from '../../components/Header';
 
 export default function StreamTab() {
   return (
-    <View style={styles.container}>
-      <VideoIframe/>
-    </View>
+    <>
+      <Header
+        titleHeader='Videos Educativos'
+        subtitleHeader='navegue nos conteúdos e entenda!'
+      />
+      <View className='flex-1 items-center justify-center bg-white px-2'>
+        <FlatList 
+          data={videoData}
+          renderItem={({item}) => <VideoIframe videoId={item.videoId}/>}
+        />
+      </View>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
