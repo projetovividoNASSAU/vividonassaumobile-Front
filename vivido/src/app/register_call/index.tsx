@@ -2,7 +2,7 @@ import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { ButtonDefault, ButtonDefaultReq } from "../../components/Button";
 import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
-import { InputArea, InputDefault } from "../../components/Input";
+import { InputArea, InputDefault, InputUpdate } from "../../components/Input";
 import { useCreateGuardianForm } from "../../hooks/useCreateGuardianForm";
 import { useState } from "react";
 import useCreateCallForm from "../../hooks/useCreateCallForm";
@@ -55,7 +55,7 @@ export default function RegisterCall() {
                     control={control}
                     name="descricao"
                     render={({ field: { onChange } }) => (
-                      <InputArea placeholder="Detalhes da causa ..." onChangeText={onChange} />
+                      <InputUpdate placeholder="Detalhes da causa ..." onChangeText={onChange} />
                     )}
                   />
                 </View>

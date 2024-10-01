@@ -1,4 +1,4 @@
-import { View, Text, Linking } from "react-native";
+import { View, Text, Image } from "react-native";
 import Header from "../../components/Header";
 import { ButtonOpenNewCall, ButtonPanic } from "../../components/Button";
 import Foundation from '@expo/vector-icons/Foundation';
@@ -24,7 +24,13 @@ export default function PanicTab() {
 
       <View className="flex-1 bg-white items-center justify-center">
         <View className="w-[70%] flex flex-col items-center gap-6">
-          <View className="bg-slate-300 w-32 h-32 rounded-full"></View>
+          <View className="bg-slate-300 w-32 h-32 rounded-full ">
+            <Image
+                source={require('../../../assets/falar.png')}
+                style={{ height: '100%', width: '100%', transform: [{ scaleX: -1 }] }}
+                className="rounded-full shadow-md shadow-slate-500"
+            />
+          </View>
           <View>
             <Text className="font-subtitle text-grayprimary text-center text-lg">
               Não se cale, denuncie!
