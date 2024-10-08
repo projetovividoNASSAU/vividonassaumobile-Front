@@ -51,8 +51,11 @@ export default function PanicTab() {
           </View>
       </View>
 
-      <View className="w-full bg-white flex flex-row justify-end">
-          <View className="w-[50%] mx-2">
+      <View className="w-full bg-white flex flex-row justify-center">
+          <View className="w-[90%] mx-2 border-t py-6 border-slate-400">
+            <Text className="text-center text-lg leading-tight py-4">
+              Obtenha suporte contando com uma equipe especializada, voltada a psicologia e ao jurídico!
+            </Text>
             <ButtonOpenNewCall to={"/register_call"}>
               <ButtonOpenNewCall.Text>
                 Abrir novo chamado {'>'}
