@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import Header from '../../components/Header';
 import Outdor from '../../components/Outdor';
-import { ButtonTab } from '../../components/Button';
+import { ButtonDefault, ButtonTab } from '../../components/Button';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useContext } from 'react';
@@ -29,7 +29,7 @@ export default function HomeTab() {
 
   return (
     <>
-      <Header titleHeader={"Bem vindo(a), Bruna!"} />
+      <Header titleHeader={"Bem vindo(a) ao Vivido"} />
       <View className='bg-white w-screen flex-1 justify-between items-center'>
         <View className='w-[90%] my-1'>
           <Text className='text-start font-bold text-2xl text-grayprimary'>Principais tópicos do dia</Text>
@@ -67,12 +67,26 @@ export default function HomeTab() {
                 params: { data: JSON.stringify(recentCall) }
               })}
             >
-              <Call
-                title={recentCall.title}
-                description={recentCall.decricao}
-                createdAt={''}
-                type={''}
-              />
+              {
+                recentCall?(
+                  <Call
+                    title={recentCall.title}
+                    description={recentCall.decricao}
+                    createdAt={''}
+                    type={''}
+                  />
+                ): (
+                <View className="w-full mx-10 py-4 items-center justify-center">
+                  <Text className='py-5'>Você ainda não possui solictações em aberto...</Text>
+                  <ButtonDefault to={"/register_call"}>
+                    <ButtonDefault.Icon>
+                      <AntDesign name="plus" size={24} color="white" />
+                    </ButtonDefault.Icon>
+                    <ButtonDefault.Text>Novo Chamado</ButtonDefault.Text>
+                  </ButtonDefault>
+                </View>
+                )
+              }
             </TouchableOpacity>
           </View>
         </View>

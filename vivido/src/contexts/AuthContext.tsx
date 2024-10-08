@@ -40,9 +40,8 @@ export default function AuthProvider({children}: AuthProviderProps) {
     const loginMutation = useLoginMutation()
 
     async function login (data: SigninProps) {
+        setIsLoading(true)      
         try {
-            
-            setIsLoading(true)
             loginMutation.mutate(data, {
                 onSuccess: async (response) => {
                     const accessToken = response?.data?.token
@@ -51,7 +50,11 @@ export default function AuthProvider({children}: AuthProviderProps) {
                         setIsLoading(false)
                         setToken(accessToken)
                         console.log('deu certo: ', response?.data)
-                        router.push('/(tabs)')
+                        if(response?.data.role === "FUNCIONARIO") {
+                            router.push('/(tabs)')
+                        } else {
+                            router.push('/(tabs_admin)')
+                        }
                     }
                 },
                 onError: (error) => {
@@ -60,8 +63,6 @@ export default function AuthProvider({children}: AuthProviderProps) {
                 })
         } catch (error) {
             console.error('Login Context Error: ', error)
-        }finally {
-            setIsLoading(false)
         }
     }
 

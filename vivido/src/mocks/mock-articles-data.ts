@@ -3,7 +3,7 @@ export const articleData = [
         id: 1,
         title: "A Escalada da Violência Urbana",
         subtitle: "Entenda as causas e impactos da violência nas grandes cidades.",
-        imageUrl: "images (1).jpeg"
+        imageUrl: "images3.jpeg"
     },
     {
         id: 2,
@@ -15,18 +15,18 @@ export const articleData = [
         id: 3,
         title: "O Impacto da Violência na Juventude",
         subtitle: "Uma análise sobre como a exposição à violência afeta o desenvolvimento de jovens.",
-        imageUrl: "images.jpeg"
+        imageUrl: "images0.jpeg"
     },
     {
         id: 4,
         title: "A Violência de Gênero no Século XXI",
         subtitle: "Explorando os desafios persistentes da violência contra mulheres e minorias.",
-        imageUrl: "images.png"
+        imageUrl: "images1.png"
     },
     {
         id: 5,
         title: "Violência nas Escolas: Um Problema Silencioso",
         subtitle: "Como o bullying e a violência nas escolas afetam o ambiente educacional.",
-        imageUrl: "images1.jpeg"
+        imageUrl: "images2.jpeg"
     },
 ];
