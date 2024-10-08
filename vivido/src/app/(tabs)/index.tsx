@@ -11,9 +11,10 @@ import { Call } from '../../components/Call';
 import { useRouter } from 'expo-router';
 
 export default function HomeTab() {
-  const { token } = useContext(AuthContext);
+  const { token, me } = useContext(AuthContext);
   const { data } = useGetCallsQuery(token);
   const router = useRouter();
+
 
   const calls = Array.isArray(data) ? data : [];
   const recentCall = calls
@@ -29,7 +30,7 @@ export default function HomeTab() {
 
   return (
     <>
-      <Header titleHeader={"Bem vindo(a) ao Vivido"} />
+      <Header titleHeader={"Bem vindo(a) ao Vivido"} subtitleHeader={me?.login} />
       <View className='bg-white w-screen flex-1 justify-between items-center'>
         <View className='w-[90%] my-1'>
           <Text className='text-start font-bold text-2xl text-grayprimary'>Principais tópicos do dia</Text>

@@ -5,13 +5,16 @@ import loginApi from "../api/post/loginApi"
 import { api } from "../api/api"
 import useLoginMutation from "../hooks/mutations/useLoginMutation"
 import { useRouter } from "expo-router"
+import { User } from "../hooks/types/user"
 
 interface AuthContextData {
     token: string | null
     login: (data: SigninProps) => void
     logout: () => void
     isAuthenticated: boolean,
-    isLoading:boolean
+    isLoading:boolean,
+    me: User|undefined,
+    setMe: React.Dispatch<React.SetStateAction<User | undefined>>
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -24,6 +27,7 @@ interface AuthProviderProps {
 export default function AuthProvider({children}: AuthProviderProps) {
     const [token, setToken] = useState<string | null >(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [me, setMe] = useState<User|undefined>()
     const router = useRouter()
 
     useEffect(() => {
@@ -49,6 +53,7 @@ export default function AuthProvider({children}: AuthProviderProps) {
                         await AsyncStorage.setItem('@authToken', accessToken)
                         setIsLoading(false)
                         setToken(accessToken)
+                        
                         console.log('deu certo: ', response?.data)
                         if(response?.data.role === "FUNCIONARIO") {
                             router.push('/(tabs)')
@@ -73,8 +78,9 @@ export default function AuthProvider({children}: AuthProviderProps) {
     }
     
     const isAuthenticated = !!token
+
     return (
-        <AuthContext.Provider value={{isLoading, token, login, logout, isAuthenticated}}>
+        <AuthContext.Provider value={{ me, setMe,  isLoading, token, login, logout, isAuthenticated}}>
             {children}
         </AuthContext.Provider>
     )

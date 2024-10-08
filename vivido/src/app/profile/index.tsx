@@ -5,9 +5,12 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from "expo-router";
 import Uninassau from "../../components/UninasauLogo";
 import BackPage from "../../components/BackPage";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Profile() {
     const router = useRouter()
+
     return (
         <>
             <Header
@@ -17,7 +20,7 @@ export default function Profile() {
                 <View className="flex-1 items-start justify-start m-auto mt-2">
                 <BackPage />
                 <View className=" flex flex-col items-center h-[40%] w-[90%] gap-6  justify-start pt-8">
-                    <Option to="/update_user">
+                    <Option>
                         <Option.OptionTitle>
                             Conta
                         </Option.OptionTitle>
@@ -25,7 +28,12 @@ export default function Profile() {
                             <AntDesign name="right" size={24} color="#3F4056" />
                         </Option.OptionIcon>
                     </Option>
-                    <Option to="/update_address">
+                    <Option onPress={()=> {
+                        router.push({
+                            pathname: '/update_address/[data]',
+                            // params: {data: JSON.stringify(user)}
+                        })
+                    }}>
                         <Option.OptionTitle>
                             Endereço
                         </Option.OptionTitle>

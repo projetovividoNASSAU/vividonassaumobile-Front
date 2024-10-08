@@ -1,9 +1,9 @@
 import { ReactNode } from "react"
+import { TouchableOpacityProps } from "react-native"
 
 export type OptionsProps = {
     children: ReactNode
-    to: string
-}
+} & TouchableOpacityProps
 
 export type OptionsTitleProps = {
     children: ReactNode
