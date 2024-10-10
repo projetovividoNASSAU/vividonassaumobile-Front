@@ -14,7 +14,7 @@ export default function PanicTab() {
     <>
       <Header
         titleHeader="Acionamento"
-        subtitleHeader="Em caso de acionamento, não se desespere"
+        subtitleHeader="Em caso de acionamento, não se cale."
       />
       
       <ModalOptions 

@@ -10,6 +10,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Profile() {
     const router = useRouter()
+    const {me} = useContext(AuthContext)
 
     return (
         <>
@@ -20,27 +21,35 @@ export default function Profile() {
                 <View className="flex-1 items-start justify-start m-auto mt-2">
                 <BackPage />
                 <View className=" flex flex-col items-center h-[40%] w-[90%] gap-6  justify-start pt-8">
-                    <Option>
-                        <Option.OptionTitle>
-                            Conta
-                        </Option.OptionTitle>
-                        <Option.OptionIcon>
-                            <AntDesign name="right" size={24} color="#3F4056" />
-                        </Option.OptionIcon>
-                    </Option>
-                    <Option onPress={()=> {
-                        router.push({
-                            pathname: '/update_address/[data]',
-                            // params: {data: JSON.stringify(user)}
-                        })
-                    }}>
-                        <Option.OptionTitle>
-                            Endereço
-                        </Option.OptionTitle>
-                        <Option.OptionIcon>
-                            <AntDesign name="right" size={24} color="#3F4056" />
-                        </Option.OptionIcon>
-                    </Option>
+                    <TouchableOpacity className="w-full" onPress={()=> router.replace('/update_user')}>
+                        <Option className="w-full !bg-slate-300" >
+                            <Option.OptionTitle>
+                                Conta
+                            </Option.OptionTitle>
+                            <Option.OptionIcon>
+                                <AntDesign name="right" size={24} color="#3F4056" />
+                            </Option.OptionIcon>
+                        </Option>
+                    </TouchableOpacity>
+                    <TouchableOpacity className="w-full" onPress={()=> {
+                            router.push({
+                                pathname: '/update_address/[data]',
+                                params: {data: JSON.stringify({
+                                    adress: me?.adress,
+                                    phone: me?.phone,
+                                    cep: me?.cep
+                                })}
+                            })
+                        }}>
+                        <Option>
+                            <Option.OptionTitle>
+                                Endereço
+                            </Option.OptionTitle>
+                            <Option.OptionIcon>
+                                <AntDesign name="right" size={24} color="#3F4056" />
+                            </Option.OptionIcon>
+                        </Option>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View className="w-full flex flex-row justify-center">
