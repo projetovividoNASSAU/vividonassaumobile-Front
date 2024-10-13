@@ -15,10 +15,10 @@ export default function ModalOptions({ isVisibled, setIsVisibled }: ModalOptions
     const phone_URL = 'tel:190'
     
     const handleNumberTel = async () => {
-        const supported = await Linking.canOpenURL(phone_URL)
+        const supported = await Linking.canOpenURL('tel:+5511900000000')
         if (supported) {
             console.log(supported)
-            await Linking.openURL(phone_URL)
+            await Linking.openURL('tel:+5511900000000')
         } else {
             Alert.alert("Erro", "Seu dispositivo não pode fazer chamadas de telefone.")
         }
