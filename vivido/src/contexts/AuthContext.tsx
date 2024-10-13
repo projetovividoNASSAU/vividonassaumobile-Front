@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react"
 import { SigninProps } from "../hooks/types/singin"
 import AsyncStorage from "@react-native-async-storage/async-storage"
-import loginApi from "../api/post/loginApi"
 import { api } from "../api/api"
 import useLoginMutation from "../hooks/mutations/useLoginMutation"
 import { useRouter } from "expo-router"
@@ -74,6 +73,7 @@ export default function AuthProvider({children}: AuthProviderProps) {
     const logout = async () => {
         await AsyncStorage.removeItem('@authToken');
         setToken(null);
+        router.push('/login')
         delete api.defaults.headers.common['Authorization'];
     }
     

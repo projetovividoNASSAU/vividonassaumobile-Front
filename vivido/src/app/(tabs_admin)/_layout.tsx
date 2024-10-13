@@ -25,9 +25,9 @@ export default function TabLayout() {
             }}
         />
          <Tabs.Screen
-            name="index"
+            name="home"
             options={{
-                tabBarIcon: ({ color, size }) => <MaterialIcons name="my-library-books" size={size} color={color} />,
+                tabBarIcon: ({ color, size }) => <MaterialIcons name="new-releases" size={size} color={color} />,
             }}
         />
     </Tabs>

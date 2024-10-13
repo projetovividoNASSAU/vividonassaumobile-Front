@@ -1,4 +1,4 @@
-import { Text,TouchableOpacity,View } from "react-native";
+import { Text,Image,TouchableOpacity,View } from "react-native";
 import Header from "../../components/Header";
 import { Option } from "../../components/OptionsProfile";
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -7,10 +7,10 @@ import Uninassau from "../../components/UninasauLogo";
 import BackPage from "../../components/BackPage";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 export default function Profile() {
     const router = useRouter()
-    const {me} = useContext(AuthContext)
+    const {me, logout} = useContext(AuthContext)
 
     return (
         <>
@@ -52,8 +52,21 @@ export default function Profile() {
                     </TouchableOpacity>
                 </View>
             </View>
+            <TouchableOpacity onPress={logout} className="w-full flex flex-row items-center bg-slate-50 justify-center py-4 px-2 ">  
+                    <Option.OptionTitle>
+                        Sair
+                    </Option.OptionTitle>
+                    <Option.OptionIcon>
+                        <FontAwesome5 name="door-open" size={24} color="black" />
+                    </Option.OptionIcon>
+            </TouchableOpacity>
             <View className="w-full flex flex-row justify-center">
-                <Uninassau/>
+            <TouchableOpacity className='h-32 w-32 mt-3'>
+            <Image 
+                className='bg-cover w-full h-full'
+                source={require('../../../assets/uninassau_share.png')}
+            />
+        </TouchableOpacity>
             </View>
         </>
     )

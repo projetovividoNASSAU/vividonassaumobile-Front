@@ -1,12 +1,13 @@
-import { Link, useLocalSearchParams } from "expo-router";
+import { Link, router, useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import Header from "../../components/Header";
 import BackPage from "../../components/BackPage";
 import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import useDeleteCallMutation from "../../hooks/mutations/useDeleteCallMutation";
+
 export default function CallDetail() {
     const {data} = useLocalSearchParams()
     const info = typeof data === 'string' ? JSON.parse(data) : null
@@ -64,19 +65,16 @@ export default function CallDetail() {
             <View
                 className="w-full flex flex-row items-center justify-between p-4"
             >
-                <Link
-                    href={{
+                <TouchableOpacity
+                    onPress={()=>router.push({
                         pathname: '/update_call/[data]',
                         params: {data: JSON.stringify(info)}
-
-                    }}
-                    className="bg-redcherry flex flex-row justify-center w-full items-center rounded-lg"
+                    })}
+                    className="bg-grayprimary flex flex-row py-4 justify-center w-full items-center gap-4 rounded-lg"
                 >
-                    <View className="w-full !flex !flex-row  items-center justify-center">
-                        <Text className="text-white font-bold">Solicitar causa</Text>
-                        <Feather name="edit" className="!text-white" size={24} />
-                    </View>
-                </Link>
+                        <Text className="text-white text-xl">Solicitar causa</Text>
+                        <FontAwesome5 name="hands-helping" size={24} className="!text-white" />
+                </TouchableOpacity>
             </View>
         </>
     )
