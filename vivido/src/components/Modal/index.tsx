@@ -1,8 +1,11 @@
 import { Modal, View, Text, Pressable, Alert } from "react-native";
 import { ToggleButton } from "../ToogleButton";
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import * as Linking from 'expo-linking'
+import useGetGuardiansQuery from "../../hooks/queries/useGetGuardiansQuery";
+import { AuthContext } from "../../contexts/AuthContext";
+import { isLoading } from "expo-font";
 
 interface ModalOptionsProps {
     isVisibled: boolean;
@@ -12,16 +15,37 @@ interface ModalOptionsProps {
 export default function ModalOptions({ isVisibled, setIsVisibled }: ModalOptionsProps) {
     const [isActiveGuardians, setIsActiveGuardians] = useState(false)
     const [isActiveGovernment, setIsActiveGovernment] = useState(false)
+    const {token, me} = useContext(AuthContext)
+    const {data, isLoading} = useGetGuardiansQuery(token)
     const phone_URL = 'tel:190'
+
+    const message = `
+        ____________________________________________________
+
+        **Extrema urgência**
+        ____________________________________________________
+
+        Olá equipe Vivido lhe constatá que 
+        a usuário ${me}, está em estado de extrema urgência.
+
+        Contate um de nossos colaboradores!!!
+
+
+
+    `
     
-    const handleNumberTel = async () => {
-        const supported = await Linking.canOpenURL('tel:+5511900000000')
-        if (supported) {
-            console.log(supported)
-            await Linking.openURL('tel:+5511900000000')
-        } else {
-            Alert.alert("Erro", "Seu dispositivo não pode fazer chamadas de telefone.")
+    const handleSendMessageGuardians = () => {
+        if (!isLoading) {
+            data?.map((guardian)=>{
+                const phone_number = '55994193056'
+
+                Linking.openURL(`http://api.whatsapp.com/send?phone=${phone_number}&text=${message}`)
+            })
         }
+    }   
+
+    const handleNumberTel = () => {
+        Linking.openURL('tel:190')
     }
 
     const handleCall = () => {
@@ -30,6 +54,7 @@ export default function ModalOptions({ isVisibled, setIsVisibled }: ModalOptions
             handleNumberTel()
             console.log('Alertando órgãos do governo...')
         } else if (isActiveGuardians) {
+            handleSendMessageGuardians()
             console.log('Alertando guardiões...')
         }
     }

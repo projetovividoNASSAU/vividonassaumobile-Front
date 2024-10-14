@@ -9,7 +9,7 @@ export default function useGetGuardiansQuery(token: string|null) {
             return getGuardiansApi(token)
         }
     })
-
+    
     return {
         data,
         error,
