@@ -22,14 +22,14 @@ export function InputDefault({ placeholder,...rest}: InputProps & TextInputProps
 }
 
 export function InputUpdate({ placeholder,...rest}: InputProps & TextInputProps) {
-    const [height, setHeight] = useState(0);
     return (
         <TextInput
             {...rest}
             multiline
+            textAlignVertical="top"
             numberOfLines={10}
             maxLength={400}
-            className={`bg-slate-100 w-[100%] px-8 p-4 text-lg rounded-2xl`}
+            className={`bg-slate-100 w-[100%]  p-4 text-lg rounded-2xl`}
 
             placeholder={placeholder}
         />

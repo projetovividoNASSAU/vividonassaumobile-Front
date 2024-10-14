@@ -23,17 +23,17 @@ export default function Calls() {
       <View className="w-ful flex items-start my-4">
         <BackPage />
       </View>
-      <View className="flex-1 items-start mb-5">
+      <View className="flex-1 items-start mb-5 px-4">
+        <Text className=" text-gray-500 pt-2 pb-6">Guardiões registrados: {data?.length}.</Text>
         <View className="w-full flex-1 items-center justify-center ">
           <FlatList
             data={data}
             contentContainerStyle={{
-              alignItems: 'center',
               width: '100%',        
             }}
             renderItem={({ item }) => (
               <TouchableOpacity
-                className="w-[90%] mb-4"  
+                className="w-[100%] mb-4"  
                 onPress={() =>
                   router.push({
                     pathname: "/call_detail/[data]",

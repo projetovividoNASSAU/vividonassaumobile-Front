@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { View, Text } from "react-native";
 
 interface CallProps {
@@ -6,6 +7,11 @@ interface CallProps {
   status?: boolean;
   createdAt: string;
   type: string;
+}
+
+export function formatData (dateString:string) {
+  const formattedData = dayjs(dateString).format("DD/MM/YY")
+  return formattedData
 }
 
 export function Call({ title, description, status, type, createdAt }: CallProps) {
@@ -20,8 +26,8 @@ export function Call({ title, description, status, type, createdAt }: CallProps)
         </View>
 
         <Text className="text-justify max-w-full">{description}</Text>
-        <View className="flex flex-row justify-start w-full">
-          <Text>Postada: {createdAt}</Text>
+        <View className="flex flex-row justify-between w-full">
+          <Text>Postada: {formatData(createdAt)}</Text>
           <Text className="bg-yellow-400 text-center rounded-full px-5">
             Chamada {status ? "Ativa" : "Pendente"}
           </Text>

@@ -17,6 +17,7 @@ export default function useCreateCallForm() {
             data, {
                 onSuccess: () => {  
                     setIsLoading(false)
+                    router.push('/calls')
                     console.log('deu bom')
                 },
                 onError: (error) => {

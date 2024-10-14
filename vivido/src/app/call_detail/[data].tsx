@@ -1,4 +1,4 @@
-import { Link, useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { View, Text, Pressable } from "react-native";
 import Header from "../../components/Header";
@@ -7,18 +7,20 @@ import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import useDeleteCallMutation from "../../hooks/mutations/useDeleteCallMutation";
+import { formatData } from '../../components/Call/index';
 export default function CallDetail() {
     const {data} = useLocalSearchParams()
     const info = typeof data === 'string' ? JSON.parse(data) : null
 
     const deleteCallMutation = useDeleteCallMutation()
-
+    const router = useRouter()
     const handleDelete = () => {
         deleteCallMutation.mutate(
             info.id,
             {
                 onSuccess: () => {
                     console.log('deu certo')
+                    router.push('/calls')
                 },
                 onError: () => {
                     console.log('peun peun peun... deu errado')
@@ -26,6 +28,7 @@ export default function CallDetail() {
             }
         )   
     }
+    console.log(info.time)
 
     return (
         <>
@@ -34,18 +37,15 @@ export default function CallDetail() {
                 subtitleHeader="Todas informações do chamado realizado"
             />
             <View className="flex-1 flex-col items-start w-full mx-4 gap-4">
-                <View className="mt-8">
-                    <BackPage />
-                </View>
                 <View className="flex flex-col h-[80%] justify-between">
                     <View className="w-full flex gap-3 border-spacing-2">
-                        <Text className="text-grayprimary font-subtitle text-2xl">{info.title}</Text>
-                        <View className="flex flex-row gap-6">
-                            <Text>Postada: 14:35:45 12/02/2032</Text>
+                        <Text className="text-grayprimary font-subtitle text-2xl py-5">{info.title}</Text>
+                        <View className="w-[90%] flex flex-row justify-between ">
                             <Text className="bg-yellow-400 text-center rounded-full px-6">Chamada pendente</Text>
-                        </View>
-                        <View className="w-full items-start flex">
                             <Text className="bg-blue-100 text-center rounded-full px-10">NPJ</Text> 
+                        </View>
+                        <View className="flex flex-row w-[90%] justify-between">
+                            <Text>Postada: {formatData(info.time)}</Text>
                         </View>
                         <Text className="text-xl">{info.decricao}</Text>
                     </View>
@@ -59,6 +59,9 @@ export default function CallDetail() {
                         </View>
                         <Text>Contato: {info.phone}</Text>
                     </View>
+                </View>
+                <View className="mt-8">
+                    <BackPage />
                 </View>
             </View>
             <View
@@ -75,10 +78,10 @@ export default function CallDetail() {
                     href={{
                         pathname: '/update_call/[data]',
                         params: {data: JSON.stringify(info)}
-
+                        
                     }}
                     className="bg-redcherry p-3 rounded-lg px-10 flex flex-row items-center"
-                >
+                    >
                         <Feather name="edit" className="!text-white" size={24} />
                         <Text className="text-white font-bold">Editar</Text>
                 </Link>
