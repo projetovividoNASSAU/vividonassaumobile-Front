@@ -19,7 +19,7 @@ export default function Login() {
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View  className="flex-1 bg-white justify-center items-center mt-24">
+            <View  className="flex-1 bg-white justify-center items-center pt-24">
                 <TemplateLogo legend="Conecte-se"/>
                 <View className='w-[80%] flex flex-col gap-10 m-14'>
                     <View>
