@@ -25,9 +25,9 @@ export default function TabLayout() {
             }}
         />
         <Tabs.Screen
-            name="stream"
+            name="education"
             options={{
-                tabBarIcon: ({ color, size }) => <AntDesign name="play" size={size} color={color} />,
+                tabBarIcon: ({ color, size }) => <MaterialIcons name="article" size={size} color={color}  />,
             }}
         />
         <Tabs.Screen
@@ -37,9 +37,9 @@ export default function TabLayout() {
             }}
         />
         <Tabs.Screen
-            name="education"
+            name="stream"
             options={{
-                tabBarIcon: ({ color, size }) => <MaterialIcons name="article" size={size} color={color}  />,
+                tabBarIcon: ({ color, size }) => <AntDesign name="play" size={size} color={color} />,
             }}
         />
         <Tabs.Screen

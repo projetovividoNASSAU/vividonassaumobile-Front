@@ -3,9 +3,11 @@ import { GuardianProps } from "./types/guardian";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import useUpdateGuardianMutation from "./mutations/useUpdateGuardianMutation";
+import { useRouter } from "expo-router";
 
 export default function useUpdateGuardianForm(info: GuardianProps) {
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter()
     const { register, control, handleSubmit, reset, watch, setValue } = useForm<GuardianProps>({
         defaultValues: info || {} 
     });
@@ -21,6 +23,7 @@ export default function useUpdateGuardianForm(info: GuardianProps) {
             {
             onSuccess: () => {
                 setIsLoading(false);
+                router.push('/guardian')
                 console.log('Guardião atualizado com sucesso');
             },
             onError: (error) => {

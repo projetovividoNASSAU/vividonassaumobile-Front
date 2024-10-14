@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Touchable } from "react-native";
 import Header from "../../components/Header";
 import BackPage from "../../components/BackPage";
 import {GuardianTab} from "../../components/Guardian";
@@ -7,7 +7,8 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import useGetGuardiansQuery from "../../hooks/queries/useGetGuardiansQuery";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Guadians() {
     const {token} = useContext(AuthContext)
@@ -24,28 +25,33 @@ export default function Guadians() {
         <>
             <Header
                 titleHeader="Guardiões"
-                subtitleHeader="Vizualize as informações de seus Guadiões."
+                subtitleHeader="Vizualize informações de seus Guadiões."
             />
-            <View className="flex-1 items-start mx-4 mb-5">
+            <View className="flex-1 items-start mx-4 mt-4 mb-5">
                 <BackPage />
-                <View className="flex-1 w-full justify-between">
+                <View className="flex-1 w-[100%] justify-between">
+                    <Text className=" text-gray-500 py-4">Guardiões registrados: {data?.length}.</Text>
+            
                     <FlatList 
-                        contentContainerStyle={{ justifyContent: 'center', width: '100%', alignItems: 'center'}}
+                        contentContainerStyle={{ justifyContent: 'center', width: '100%'}}
                         data={data}
                         renderItem={({item}) => (
-                            <Link
-                                className="!w-[100%]"
-                                href={{
-                                    pathname: '/update_guardian/[data]',
-                                    params: {data: JSON.stringify(item)}  
+                            <TouchableOpacity
+                                className="w-full "
+                                onPress={()=>{
+                                    router.push({
+                                        pathname: '/update_guardian/[data]',
+                                        params: {data: JSON.stringify(item)}  
+                                    })
                                 }}
                             >
+                                
                                 <GuardianTab 
                                     name={item.name}
                                     phone={item.phone}
                                     id={item.id}
                                 />
-                            </Link>
+                            </TouchableOpacity>
                         )}
                     />
                     <ButtonDefault to={"/register_guardians"}>

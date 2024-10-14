@@ -30,17 +30,17 @@ export function GuardianTab({name, phone, id,type}:GuardianProps) {
 
     return (
         <View
-            className="flex flex-row border-[0.10rem] gap-7 justify-between items-center py-4 px-4 !w-[100%] border-slate-200 "
+            className="flex flex-row border-[0.10rem] justify-between items-center py-4 px-4 max-w-full  border-slate-200 "
         >
-            <View className="mr-4">
+            <View className="mr-0">
                 <Text className="font-subtitle">{infoGuardian.name}</Text>
                 {/* <Text>{infoGuardian.type}</Text> */}
             </View>
-            <View  className="mr-4">
+            <View  className="mr-0">
                 <Text>{infoGuardian.phone}</Text>
             </View> 
             <TouchableOpacity 
-                className="mr-4"
+                className="mr-0"
                 onPress={handleOnDelete}
             >
                 <Ionicons name="person-remove-sharp" size={24} color="#3F4056" />

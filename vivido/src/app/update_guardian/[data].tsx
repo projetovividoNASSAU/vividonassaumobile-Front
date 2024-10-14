@@ -28,13 +28,13 @@ export default function UpdateGuardians() {
         <>
             <Header
                 titleHeader="Atualizar Guardião"
-                subtitleHeader="Atualize as informações dos seus guardiões em caso de emergência."
+                subtitleHeader="Atualize informações dos seus guardiões."
             />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View className="flex-1 items-start mx-4 mb-10">
+                <View className="flex-1 items-start mx-4 mt-3 mb-10">
                     <BackPage />
                     <View className="flex-1 w-full items-center justify-between">
-                        <View className="flex-1 w-full items-center border-t-2 border-gray-300 py-5 gap-10 justify-start">
+                        <View className="flex-1 w-full items-center  py-5 gap-10 justify-start">
                             <View className="w-full flex flex-col items-center">
                                 <View className="w-full">
                                     <Text className="font-subtitle text-xs">Nome:</Text>
