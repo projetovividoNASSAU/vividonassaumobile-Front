@@ -1,4 +1,4 @@
-import { Modal, View, Text, Pressable, Alert } from "react-native";
+import { Modal, View, Text, Pressable, Alert,StyleSheet } from "react-native";
 import { ToggleButton } from "../ToogleButton";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useContext, useState } from "react";
@@ -66,7 +66,7 @@ export default function ModalOptions({ isVisibled, setIsVisibled }: ModalOptions
         visible={isVisibled}
         onRequestClose={() => setIsVisibled(false)}
     >
-        <View className="flex-1 justify-center items-center bg-slate-700 !bg-opacity-80">
+        <View style={styles.transparentBg}>
         <View className="w-[90%] h-[60%] bg-white p-5 rounded-lg justify-between items-center">
             <View className="w-full flex flex-row items-start">
                 <Pressable
@@ -110,3 +110,12 @@ export default function ModalOptions({ isVisibled, setIsVisibled }: ModalOptions
     </Modal>
     );
 }
+
+const styles = StyleSheet.create({
+    transparentBg: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(20, 41, 59, 0.8)',
+    },
+  });

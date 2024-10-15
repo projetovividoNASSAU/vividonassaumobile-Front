@@ -15,7 +15,7 @@ export  function ToggleButton({isActive,setIsActive,subtitle,title}: ToggleButto
     return (
     <Pressable
         onPress={toggle}
-        className='w-full flex flex-row justify-between items-center rounded-2xl border-2 border-slate-300 gap-3 p-4'
+        className={`w-full flex flex-row justify-between items-center rounded-2xl border-2 ${isActive ? "border-redcherry" : "border-gray-300"} gap-3 p-4`}
     >
         <View 
             className={`w-10 h-10 rounded-lg flex justify-center items-center ${

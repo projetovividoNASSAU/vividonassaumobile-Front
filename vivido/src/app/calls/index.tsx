@@ -24,7 +24,7 @@ export default function Calls() {
         <BackPage />
       </View>
       <View className="flex-1 items-start mb-5 px-4">
-        <Text className=" text-gray-500 pt-2 pb-6">Guardiões registrados: {data?.length}.</Text>
+        <Text className=" text-gray-500 pt-2 pb-6">Chamados registrados: {data?.length}.</Text>
         <View className="w-full flex-1 items-center justify-center ">
           <FlatList
             data={data}
