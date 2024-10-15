@@ -22,11 +22,10 @@ export default function RegisterGuardians() {
         <>
             <Header
                 titleHeader="Registrar Guardiões"
-                subtitleHeader="registre e gerencie novos guardiões."
+                subtitleHeader={(<BackPage/>)}
             />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View className="flex-1 items-start mt-4 mx-4 mb-10">
-                    <BackPage />
                     <View className="flex-1 w-full items-center justify-between">
                         <View className="flex-1 w-full items-center py-5 gap-10 justify-start">
                             <View className="w-full flex flex-col items-center">

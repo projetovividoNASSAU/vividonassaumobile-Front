@@ -12,7 +12,7 @@ export default function NewDetails() {
         <>
             <Header 
                 titleHeader="Artigos"
-                subtitleHeader="Acompanhe artigos sobre o assunto."
+                subtitleHeader={(<BackPage/>)}
             />
             <ScrollView 
                 contentContainerStyle={{ flexGrow: 1, alignItems: 'flex-start', padding: 20 }} 

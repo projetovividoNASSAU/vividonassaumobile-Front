@@ -15,10 +15,9 @@ export default function UserUpdate () {
         <>
             <Header 
                 titleHeader="Conta"
-                subtitleHeader="Atualize suas informações de usuário"
+                subtitleHeader={(<BackPage/>)}
             />
             <View className="flex-1 items-start justify-start px-3">
-            <BackPage />
                 <View className="w-full h-[80%] flex flex-col justify-between">
                     <View className="w-full flex flex-col items-center h-[40%] gap-6  justify-between-300 pt-8">
                         <View className="w-full flex flex-col items-center">

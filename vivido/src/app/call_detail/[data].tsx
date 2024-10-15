@@ -34,7 +34,7 @@ export default function CallDetail() {
         <>
             <Header 
                 titleHeader="Detalhes do Chamado"
-                subtitleHeader="Todas informações do chamado realizado"
+                subtitleHeader={(<BackPage/>)}
             />
             <View className="flex-1 flex-col items-start w-full mx-4 gap-4">
                 <View className="flex flex-col h-[80%] justify-between">
@@ -59,9 +59,6 @@ export default function CallDetail() {
                         </View>
                         <Text>Contato: {info.phone}</Text>
                     </View>
-                </View>
-                <View className="mt-8">
-                    <BackPage />
                 </View>
             </View>
             <View

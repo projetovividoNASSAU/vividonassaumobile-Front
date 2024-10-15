@@ -18,11 +18,8 @@ export default function Calls() {
     <>
       <Header
         titleHeader="Chamados"
-        subtitleHeader="Acompanhe o progresso de seus chamados"
+        subtitleHeader={(<BackPage />)}
       />
-      <View className="w-ful flex items-start my-4">
-        <BackPage />
-      </View>
       <View className="flex-1 items-start mb-5 px-4">
         <Text className=" text-gray-500 pt-2 pb-6">Chamados registrados: {data?.length}.</Text>
         <View className="w-full flex-1 items-center justify-center ">

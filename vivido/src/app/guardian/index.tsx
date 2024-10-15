@@ -25,10 +25,9 @@ export default function Guadians() {
         <>
             <Header
                 titleHeader="Guardiões"
-                subtitleHeader="Vizualize informações de seus Guadiões."
+                subtitleHeader={(<BackPage/>)}
             />
             <View className="flex-1 items-start mx-4 mt-4 mb-5">
-                <BackPage />
                 <View className="flex-1 w-[100%] justify-between">
                     <Text className=" text-gray-500 py-4">Guardiões registrados: {data?.length}.</Text>
             
