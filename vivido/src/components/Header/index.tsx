@@ -21,16 +21,16 @@ export default function Header({titleHeader, subtitleHeader}: HeaderProps) {
     <View className="w-screen bg-white p-4 h-32 flex-row pt-16 justify-center items-center">
         <View className="flex-row justify-between border-b border-slate-400 pb-7 w-full mx-5">
             <View className={`flex flex-row-reverse items-center justify-between flex-1 ${typeof subtitleHeader === "string" && "flex flex-col !items-start justify-between"}`}>
-                <Text className="font-title text-grayprimary text-center flex-1 text-xl">
+                <Text className={`font-title !text-grayprimary flex-1 text-xl ${typeof subtitleHeader !== "string" && "pl-11"}`}>
                     {titleHeader}
                 </Text>
                 {subtitleHeader && (
-                    <Text>
+                    <Text >
                         {subtitleHeader}
                     </Text>
                 )}
             </View>            
-            <Pressable onPress={() => router.push('/profile')} className="h-14 w-14 rounded-full ml-4">
+            <Pressable onPress={() => router.push('/profile')} className="h-14 w-14 rounded-full ">
                 <Image
                     source={require('../../../assets/defaultimg.jpg')} 
                     style={{ height: '100%', width: '100%' }}
@@ -39,6 +39,5 @@ export default function Header({titleHeader, subtitleHeader}: HeaderProps) {
             </Pressable>
         </View>
     </View>
-    
     )
 };

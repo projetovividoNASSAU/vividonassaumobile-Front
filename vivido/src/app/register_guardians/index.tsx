@@ -21,7 +21,7 @@ export default function RegisterGuardians() {
     return (
         <>
             <Header
-                titleHeader="Registrar Guardiões"
+                titleHeader="Novo Guardião"
                 subtitleHeader={(<BackPage/>)}
             />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
