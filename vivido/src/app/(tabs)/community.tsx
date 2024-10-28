@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function CommunityTab() {
   return (
     <View style={styles.container}>
-     <Text>Em constução...</Text>
+     <Text>Em breve...</Text>
     </View>
   );
 }
