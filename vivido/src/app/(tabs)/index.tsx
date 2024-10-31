@@ -45,7 +45,7 @@ export default function HomeTab() {
             <ButtonTab.ButtonIconTab>
               <AntDesign name="heart" size={24} color="white" />
             </ButtonTab.ButtonIconTab>
-            <ButtonTab.ButtonTextTab>Gurdiões</ButtonTab.ButtonTextTab>
+            <ButtonTab.ButtonTextTab>Guardiões</ButtonTab.ButtonTextTab>
           </ButtonTab>
           <ButtonTab to='/calls'>
             <ButtonTab.ButtonIconTab>

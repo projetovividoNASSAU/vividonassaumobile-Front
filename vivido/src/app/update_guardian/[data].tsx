@@ -27,8 +27,10 @@ export default function UpdateGuardians() {
     return (
         <>
             <Header
-                titleHeader="Atualizar Guardião"
-                subtitleHeader={(<BackPage/>)}
+                titleHeader="Guardião"
+                subtitleHeader={(<BackPage
+                    to="/guardian"
+                />)}
             />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View className="flex-1 items-start mx-4 mt-3 mb-10">

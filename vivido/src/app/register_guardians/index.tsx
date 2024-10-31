@@ -22,7 +22,9 @@ export default function RegisterGuardians() {
         <>
             <Header
                 titleHeader="Novo Guardião"
-                subtitleHeader={(<BackPage/>)}
+                subtitleHeader={(<BackPage
+                    to="/(tabs)/"
+                />)}
             />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View className="flex-1 items-start mt-4 mx-4 mb-10">
@@ -30,7 +32,7 @@ export default function RegisterGuardians() {
                         <View className="flex-1 w-full items-center py-5 gap-10 justify-start">
                             <View className="w-full flex flex-col items-center">
                                 <View className="w-full">
-                                    <Text className="font-subtitle text-xs">Nome:</Text>
+                                    <Text className="font-subtitle text-xs">Nome Completo:</Text>
                                     <Controller
                                         control={control}
                                         name="name"

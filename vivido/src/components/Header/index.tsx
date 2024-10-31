@@ -32,7 +32,7 @@ export default function Header({titleHeader, subtitleHeader}: HeaderProps) {
             </View>            
             <Pressable onPress={() => router.push('/profile')} className="h-14 w-14 rounded-full ">
                 <Image
-                    source={require('../../../assets/defaultimg.jpg')} 
+                    source={require('../../../assets/adaptive-icon.png')} 
                     style={{ height: '100%', width: '100%' }}
                     className="rounded-full shadow-md shadow-slate-500"
                 />

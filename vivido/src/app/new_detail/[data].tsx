@@ -12,12 +12,13 @@ export default function NewDetails() {
         <>
             <Header 
                 titleHeader="Artigos"
-                subtitleHeader={(<BackPage/>)}
+                subtitleHeader={(<BackPage
+                        to="/(tabs)/"
+                />)}
             />
             <ScrollView 
                 contentContainerStyle={{ flexGrow: 1, alignItems: 'flex-start', padding: 20 }} 
             >
-                <BackPage />
                 <View className="w-full flex gap-3 py-4">
                     <Text className="text-grayprimary font-subtitle text-xl font-semibold">
                         {info.title}

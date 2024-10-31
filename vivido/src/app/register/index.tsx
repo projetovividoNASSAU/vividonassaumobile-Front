@@ -20,7 +20,7 @@ export default function Register() {
                 <TemplateLogo legend="Registre-se"/>
                 <View className='w-[80%] flex flex-col gap-10 '>
                     <View>
-                        <Text className="font-subtitle">Nome:</Text>
+                        <Text className="font-subtitle">Nome Completo:</Text>
                         <Controller
                             control={control}
                             name="name"

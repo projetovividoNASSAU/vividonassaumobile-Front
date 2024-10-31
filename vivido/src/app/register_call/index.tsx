@@ -20,7 +20,9 @@ export default function RegisterCall() {
     <>
       <Header
         titleHeader="Abrir Chamado"
-        subtitleHeader={(<BackPage/>)}
+        subtitleHeader={(<BackPage
+                to="/(tabs)/"
+        />)}
       />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View className="flex-1 items-start mx-4 mb-10">
@@ -43,7 +45,7 @@ export default function RegisterCall() {
                     control={control}
                     name="type"
                     render={({ field: { onChange } }) => (
-                      <InputDefault placeholder="Relate um titulo da causa ..." onChangeText={onChange} />
+                      <InputDefault placeholder="(NPJ ou PSICOLOGIA)" onChangeText={onChange} />
                     )}
                   />
                 </View>

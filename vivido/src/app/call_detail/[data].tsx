@@ -33,8 +33,10 @@ export default function CallDetail() {
     return (
         <>
             <Header 
-                titleHeader="Detalhes do Chamado"
-                subtitleHeader={(<BackPage/>)}
+                titleHeader="Chamado"
+                subtitleHeader={(<BackPage
+                    to="/(tabs)/"
+                />)}
             />
             <View className="flex-1 flex-col items-start w-full mx-4 gap-4">
                 <View className="flex flex-col h-[80%] justify-between">

@@ -18,7 +18,9 @@ export default function Calls() {
     <>
       <Header
         titleHeader="Chamados"
-        subtitleHeader={(<BackPage />)}
+        subtitleHeader={(<BackPage 
+          to="/(tabs)/"
+        />)}
       />
       <View className="flex-1 items-start mb-5 px-4">
         <Text className=" text-gray-500 pt-2 pb-6">Chamados registrados: {data?.length}.</Text>

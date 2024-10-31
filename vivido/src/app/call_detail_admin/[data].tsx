@@ -31,12 +31,14 @@ export default function CallDetail() {
     return (
         <>
             <Header 
-                titleHeader="Detalhes do Chamado"
+                titleHeader="Chamado"
                 subtitleHeader="Todas informações do chamado realizado"
             />
             <View className="flex-1 flex-col items-start w-full mx-4 gap-4">
                 <View className="mt-8">
-                    <BackPage />
+                    <BackPage 
+                        to=""
+                    />
                 </View>
                 <View className="flex flex-col h-[80%] justify-between">
                     <View className="w-full flex gap-3 border-spacing-2">

@@ -19,7 +19,9 @@ export default function Profile() {
                 subtitleHeader="Atualize suas informações de usuário"
             />
                 <View className="flex-1 items-start justify-start m-auto mt-2">
-                <BackPage />
+                <BackPage 
+                    to="/(tabs)/"
+                />
                 <View className=" flex flex-col items-center h-[40%] w-[90%] gap-6  justify-start pt-8">
                     <TouchableOpacity className="w-full" onPress={()=> router.replace('/update_user')}>
                         <Option className="w-full !bg-slate-300" >

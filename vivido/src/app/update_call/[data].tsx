@@ -27,8 +27,10 @@ export default function UpdateCall() {
     return (
         <>
             <Header
-                titleHeader="Atualizar Chamado"
-                subtitleHeader={(<BackPage/>)}
+                titleHeader="Chamado"
+                subtitleHeader={(<BackPage
+                      to="/calls"
+                />)}
             />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View className="flex-1 items-start mx-4 mb-10">

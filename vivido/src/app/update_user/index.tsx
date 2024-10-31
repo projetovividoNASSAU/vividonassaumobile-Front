@@ -15,7 +15,9 @@ export default function UserUpdate () {
         <>
             <Header 
                 titleHeader="Conta"
-                subtitleHeader={(<BackPage/>)}
+                subtitleHeader={(<BackPage
+                          to="/profile"
+                />)}
             />
             <View className="flex-1 items-start justify-start px-3">
                 <View className="w-full h-[80%] flex flex-col justify-between">
