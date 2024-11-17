@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Header from '../../components/Header';
 import { ButtonDefault } from '../../components/Button';
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -7,7 +7,9 @@ import useGetCallsQuery from '../../hooks/queries/useGetCallsQuery';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Call } from '../../components/Call';
 import { useRouter } from 'expo-router';
-import Category from '../../components/CategoryTab';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { TextInput } from 'react-native-gesture-handler';
 
 export default function HomeTab() {
   const { token, me } = useContext(AuthContext);
@@ -30,21 +32,23 @@ export default function HomeTab() {
   return (
     <>
       <Header titleHeader={"Bem vindo(a) ao Vivido"} subtitleHeader={me?.login} />
-      <View className='bg-white w-screen flex-1 justify-start gap-6 items-center'>
-        <View className='w-[90%] mx-6'>
-          <Text className='text-start font-bold text-2xl text-grayprimary'>Chamados recentes</Text>
-        </View>
-        <View className='w-[100%]'>
-          <View className='w-[90%] mx-6 my-4 flex flex-row justify-between'>
-            <Category name='Recentes'/>
-            <Category name='Resolvidos'/>
-            <Category name='Pendente'/>
+      <View className='bg-white w-screen flex-1 justify-start gap-8 items-center'>
+      <View className='w-full px-4'>
+          <TextInput
+            className={`bg-slate-100 w-[100%]  p-4 text-lg rounded-2xl`}
+            placeholder={"Busque por um chamado ..."}
+          />
+      </View>
+
+        <View className='w-[100%] my-1'>
+          <View className='w-[90%] mx-7'>
+              <Text className='text-start font-bold text-xl text-grayprimary'>Encontrados(2)</Text>
           </View>
           <View className='w-full flex items-center justify-center my-5'>
             <TouchableOpacity
               className="w-[90%] items-center"
               onPress={() => router.push({
-                pathname: '/call_detail_admin/[data]',
+                pathname: '/call_detail/[data]',
                 params: { data: JSON.stringify(recentCall) }
               })}
             >

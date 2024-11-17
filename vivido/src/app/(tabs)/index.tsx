@@ -78,7 +78,7 @@ export default function HomeTab() {
                   />
                 ): (
                 <View className="w-full mx-10 py-4 items-center justify-center">
-                  <Text className='py-5'>Você ainda não possui solictações em aberto...</Text>
+                  <Text className='py-5'>Você ainda não possui solicitações em aberto...</Text>
                   <ButtonDefault to={"/register_call"}>
                     <ButtonDefault.Icon>
                       <AntDesign name="plus" size={24} color="white" />

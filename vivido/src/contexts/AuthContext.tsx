@@ -55,9 +55,9 @@ export default function AuthProvider({children}: AuthProviderProps) {
                         
                         console.log('deu certo: ', response?.data)
                         if(response?.data.role === "FUNCIONARIO") {
-                            router.push('/(tabs)')
-                        } else {
                             router.push('/(tabs_admin)')
+                        } else {
+                            router.push('/(tabs)')
                         }
                     }
                 },

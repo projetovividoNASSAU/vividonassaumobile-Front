@@ -24,10 +24,10 @@ export default function TabLayout() {
                 tabBarIcon: ({ color, size }) => <FontAwesome6 name="house" size={size} color={color} />,
             }}
         />
-         <Tabs.Screen
-            name="home"
+        <Tabs.Screen
+            name="search"
             options={{
-                tabBarIcon: ({ color, size }) => <MaterialIcons name="new-releases" size={size} color={color} />,
+                tabBarIcon: ({ color, size }) => <Ionicons name="search-sharp" size={size} color={color} />,
             }}
         />
     </Tabs>
