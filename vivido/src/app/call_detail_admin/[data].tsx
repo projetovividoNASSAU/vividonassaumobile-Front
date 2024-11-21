@@ -11,7 +11,7 @@ export default function CallDetail() {
     const [isRequested, setIsRequested] = useState(false)
     const {data} = useLocalSearchParams()
     const info = typeof data === 'string' ? JSON.parse(data) : null
-
+    console.log(info)
 
     return (
         <>
@@ -63,7 +63,7 @@ export default function CallDetail() {
                 className="w-full flex h-[25%] flex-col items-center justify-between p-4 px-4"
             >
                 {
-                    isRequested ? (
+                    info?.callback ? (
                         <>
                             <TouchableOpacity
                             onPress={()=>router.push({
@@ -75,7 +75,7 @@ export default function CallDetail() {
                             <Text className="text-grayprimary font-bold text-lg">Visualizar solicitação</Text>
                             <AntDesign name="right" className="text-grayprimary font-bold text-lg" size={24} />                
                         </TouchableOpacity>
-                        <View className="my-2 mx-4">
+                        <View className="mb-8 mx-4">
                             <Text className="text-grayprimary font-bold text-xl">
                                 Preview:
                             </Text>
@@ -86,8 +86,9 @@ export default function CallDetail() {
                                 <Text className="bg-blue-100 text-center rounded-full px-10">NPJ</Text> 
                             </View>
                             <Text className="text-base text-justify ">
-                                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece 
-                                of classical Latin literature from 45 BC.
+                                {
+                                    info?.callback
+                                }
                                 
                             </Text>
                         </View>
@@ -97,7 +98,7 @@ export default function CallDetail() {
                         <Text className='py-5'>Realize a tratativa dessa solicitação:</Text>
                         <TouchableOpacity
                             onPress={()=>router.push({
-                                pathname: '/request_call_admin',
+                                pathname: '/request_call_admin/[data]',
                                 params: {data: JSON.stringify(info)}
                             })}
                             className="bg-grayprimary flex flex-row py-3 px-5 justify-center w-full items-center gap-4 rounded-2xl"

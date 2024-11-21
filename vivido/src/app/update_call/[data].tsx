@@ -29,7 +29,7 @@ export default function UpdateCall() {
             <Header
                 titleHeader="Chamado"
                 subtitleHeader={(<BackPage
-                      to="/calls"
+                    to="/calls"
                 />)}
             />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

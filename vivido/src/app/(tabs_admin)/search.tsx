@@ -19,19 +19,11 @@ export default function HomeTab() {
   const [inputValue, setInputValue] = useState("")
   const router = useRouter();
 
-
-  
-  const calladm = Object.keys(data)
   console.log(data)
   const serchCall = data.filter((call:any) =>
     call.title.toLocaleUpperCase().includes(inputValue.toLocaleUpperCase())
-  );  // if (!data) {
-  //   return (
-  //     <View className='flex-1 items-center justify-center'>
-  //       <Text>Carregando...</Text>
-  //     </View>
-  //   );
-  // }
+  );  
+
 
   return (
     <>
@@ -46,14 +38,13 @@ export default function HomeTab() {
       </View>
         <View className='w-[100%] my-1'>
           <View className='w-[90%] mx-7'>
-              <Text className='text-start font-bold text-xl text-grayprimary'>Encontrados(2)</Text>
+              <Text className='text-start font-bold text-xl text-grayprimary'>Encontrados</Text>
           </View>
           <View className='w-full h-[82%] flex items-center justify-center my-5'>
             <FlatList
               data={serchCall}
               contentContainerStyle={{
                 width: '100%',   
-                // height: '100%',     
               }}
               renderItem={({ item }) => (
                 <TouchableOpacity
