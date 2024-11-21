@@ -62,7 +62,8 @@ export default function Login() {
                         </ButtonPrimary>
                     </View>
                 </View>
-                <Uninassau/>    
+                <Uninassau/>  
+                <Text className="text-slate-600 font-semibold">powered by Diego <Text className="text-redcherry">|</Text> Bruna</Text>  
             </View>
         </TouchableWithoutFeedback>
     )

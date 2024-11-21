@@ -72,6 +72,7 @@ export default function Register() {
                     </View>
                 </View>
                 <Uninassau/>  
+                <Text className="text-slate-600 font-semibold">powered by Diego <Text className="text-redcherry">|</Text> Bruna</Text>
             </View>
         </TouchableWithoutFeedback>
     )

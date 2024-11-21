@@ -28,7 +28,7 @@ export default function Calls() {
           <FlatList
             data={data}
             contentContainerStyle={{
-              width: '100%',        
+              width: '100%',  
             }}
             renderItem={({ item }) => (
               <TouchableOpacity
