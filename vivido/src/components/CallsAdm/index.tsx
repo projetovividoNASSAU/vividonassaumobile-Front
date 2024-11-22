@@ -8,7 +8,8 @@ interface CallProps {
     status?: string;
     createdAt: string;
     type: string;
-    nameFun: string
+    nameFun: string;
+    callback:string
 }
 
 export function formatData (dateString:string) {
@@ -16,7 +17,7 @@ export function formatData (dateString:string) {
     return formattedData
 }
 
-export function CallAdm({ title, description, status, type, createdAt, nameFun, user }: CallProps) {
+export function CallAdm({ title, description, status, type, createdAt, nameFun,callback, user }: CallProps) {
     return (
         <View className="w-[95%] ">
         <View className="flex flex-col gap-4 w-full items-start justify-between border border-slate-200 rounded-lg p-4">
@@ -28,7 +29,14 @@ export function CallAdm({ title, description, status, type, createdAt, nameFun, 
             </View>
             <View className="flex flex-row items-center gap-4 w-full">
                 <View className="w-[100%] flex flex-row gap-2 justify-start ">
-                    <Text className="bg-yellow-400 text-center rounded-full px-6">{nameFun}</Text>
+                        {
+                            callback !== "Aguardando atualizações" ? (
+                                
+                                <Text className="bg-teal-800 text-center rounded-full px-6 text-white">Chamado fechado</Text>
+                            ): (
+                                <Text className="bg-yellow-400 text-center rounded-full px-6">Chamado aberto</Text>
+                            )
+                        }
                 </View>
             </View>
 

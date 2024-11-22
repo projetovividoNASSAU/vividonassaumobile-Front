@@ -39,22 +39,6 @@ export default function CallDetail() {
                     <ScrollView className="w-full flex gap-3 border-spacing-2">
                         <Text className="text-base text-justify mx-6">
                             {info?.decricao}
-                        {/* Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece 
-                        of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief,
-                        Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 
-                        BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. 
-                        It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to 
-                        popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 
-                        45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has 
-                        roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to
-                        popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
-                        making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a 
-                        piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not 
-                        simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. 
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature 
-                        from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum 
-                        is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.  */}
                         </Text>
                     </ScrollView>
                 </View>
@@ -63,11 +47,11 @@ export default function CallDetail() {
                 className="w-full flex h-[25%] flex-col items-center justify-between p-4 px-4"
             >
                 {
-                    info?.callback ? (
+                    info?.callback !== "Aguardando atualizações" ? (
                         <>
                             <TouchableOpacity
                             onPress={()=>router.push({
-                                pathname: '/request_call_details_admin',
+                                pathname: '/request_call_details_admin/[data]',
                                 params: {data: JSON.stringify(info)}
                             })}
                             className="bg-slate-200 flex flex-row py-3 px-14 justify-between w-full items-center gap-4 rounded-2xl"

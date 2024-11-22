@@ -56,6 +56,7 @@ export default function HomeTab() {
                     })}
                 >
                   <CallAdm
+                      callback={item?.calback}
                       nameFun={item?.nameFun}
                       user={item.name}
                       title={item.title}

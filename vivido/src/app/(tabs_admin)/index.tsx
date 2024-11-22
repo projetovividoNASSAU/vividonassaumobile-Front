@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import Header from '../../components/Header';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import Category from '../../components/CategoryTab';
 import useGetCallsAdmQuerie from '../../hooks/queries/useGetCallsAdmQuerie';
@@ -13,19 +13,29 @@ export default function HomeTab() {
   const { data } = useGetCallsAdmQuerie(token);
   const router = useRouter();
 
+  const [buttonTab, setButtonTab] =  useState("recentes")
+
+
+
   console.log(data)
   const calladm = Array.isArray(data)? data :[]
 
-  // const recentCall = calls
-  //   .sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime())[0];
+  const current = calladm.filter((call:any) =>
+    call?.callback === "Aguardando atualizações"
+  );  
 
-  // if (!data) {
-  //   return (
-  //     <View className='flex-1 items-center justify-center'>
-  //       <Text>Carregando...</Text>
-  //     </View>
-  //   );
-  // }
+  const resolve = calladm.filter((call:any) =>
+    call?.callback !== "Aguardando atualizações"
+  );  
+
+  const request = calladm.filter((call:any) =>
+    call.nameFun === me?.name
+  );  
+
+  console.log("recentes", current)
+  console.log("resolvidos", resolve)
+  console.log("solicitados por mim", request)
+
 
   return (
     <>
@@ -36,38 +46,107 @@ export default function HomeTab() {
         </View>
         <View className='w-[100%]'>
           <View className='w-[90%] mx-6 my-4 flex flex-row justify-between'>
-            <Category name='Recentes'/>
-            <Category name='Resolvidos'/>
-            <Category name='Pendente'/>
+            <Category name='Recentes' onPress={()=> setButtonTab("recentes")}/>
+            <Category name='Resolvidos' onPress={()=> setButtonTab("resolvidos")}/>
+            <Category name='Solicitados' onPress={()=> setButtonTab("solicitados")}/>
           </View>
           <View className='w-full h-[82%] flex items-center justify-center my-5'>
-            <FlatList
-              data={calladm}
-              contentContainerStyle={{
-                width: '100%',   
-                // height: '100%',     
-              }}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                key={item.id}
-                  className="w-[100%] items-center"
-                  onPress={() => router.push({
-                    pathname: '/call_detail_admin/[data]',
-                    params: { data: JSON.stringify(item) }
-                  })}
-                >
-                  <CallAdm
-                      nameFun={item.nameFun}
-                      user={item.name}
-                      title={item.title}
-                      description={item.decricao}
-                      createdAt={item.time}
-                      type={item.type}
-                    /> 
-                </TouchableOpacity>
-              )}
-              keyExtractor={(item) => item.id}
-            />
+            {
+              buttonTab === "recentes" && (
+                <FlatList
+                data={current}
+                contentContainerStyle={{
+                  width: '100%',   
+                  // height: '100%',     
+                }}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                  key={item.id}
+                    className="w-[100%] items-center"
+                    onPress={() => router.push({
+                      pathname: '/call_detail_admin/[data]',
+                      params: { data: JSON.stringify(item) }
+                    })}
+                  >
+                    <CallAdm
+                        nameFun={item.nameFun}
+                        callback={item.callback}
+                        user={item.name}
+                        title={item.title}
+                        description={item.decricao}
+                        createdAt={item.time}
+                        type={item.type}
+                      /> 
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item.id}
+              />
+              )
+            }
+            {
+              buttonTab === "resolvidos" && (
+                <FlatList
+                data={resolve}
+                contentContainerStyle={{
+                  width: '100%',   
+                  // height: '100%',     
+                }}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                  key={item.id}
+                    className="w-[100%] items-center"
+                    onPress={() => router.push({
+                      pathname: '/call_detail_admin/[data]',
+                      params: { data: JSON.stringify(item) }
+                    })}
+                  >
+                    <CallAdm
+                        nameFun={item.nameFun}
+                        callback={item.callback}
+                        user={item.name}
+                        title={item.title}
+                        description={item.decricao}
+                        createdAt={item.time}
+                        type={item.type}
+                      /> 
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item.id}
+              />
+              )
+            }
+            {
+              buttonTab === "solicitados" && (
+                <FlatList
+                data={request}
+                contentContainerStyle={{
+                  width: '100%',   
+                  // height: '100%',     
+                }}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                  key={item.id}
+                    className="w-[100%] items-center"
+                    onPress={() => router.push({
+                      pathname: '/call_detail_admin/[data]',
+                      params: { data: JSON.stringify(item) }
+                    })}
+                  >
+                    <CallAdm
+                        nameFun={item.nameFun}
+                        callback={item.callback}
+                        user={item.name}
+                        title={item.title}
+                        description={item.decricao}
+                        createdAt={item.time}
+                        type={item.type}
+                      /> 
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item.id}
+              />
+              )
+            }
           </View>
         </View>
       </View>
