@@ -2,10 +2,11 @@ import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { ButtonDefaultReq } from "../../components/Button";
 import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
-import { InputDefault } from "../../components/Input";
+import { InputDefault, InputPhone, removeCountryCode } from "../../components/Input";
 import { useEffect } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import useUpdateGuardianForm from "../../hooks/useUpdateGuardianForm";
+import { formatPhone } from '../../components/Input/index';
 
 export default function UpdateGuardians() {
     const { data } = useLocalSearchParams();
@@ -59,12 +60,12 @@ export default function UpdateGuardians() {
                                     <Controller
                                         control={control}
                                         name="phone"
-                                        defaultValue={info?.phone || ''}
+                                        defaultValue={formatPhone(removeCountryCode(info?.phone || ''))}
                                         render={({ field: { onChange, value } }) => (
-                                            <InputDefault
+                                            <InputPhone
                                                 placeholder="Telefone do Guardião"
                                                 onChangeText={onChange}
-                                                value={value}
+                                                value={formatPhone(removeCountryCode(value))}
                                             />
                                         )}
                                     />

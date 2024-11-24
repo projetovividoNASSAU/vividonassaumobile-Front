@@ -9,6 +9,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import useGetGuardiansQuery from "../../hooks/queries/useGetGuardiansQuery";
 import { Link, router } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { formatPhone, removeCountryCode } from '../../components/Input/index';
 
 export default function Guadians() {
     const {token} = useContext(AuthContext)
@@ -49,7 +50,7 @@ export default function Guadians() {
                                 
                                 <GuardianTab 
                                     name={item.name}
-                                    phone={item.phone}
+                                    phone={formatPhone(removeCountryCode(item.phone))}
                                     id={item.id}
                                 />
                             </TouchableOpacity>

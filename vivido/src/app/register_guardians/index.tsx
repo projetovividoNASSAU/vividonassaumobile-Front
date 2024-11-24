@@ -2,7 +2,7 @@ import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { ButtonDefaultReq } from "../../components/Button";
 import BackPage from "../../components/BackPage";
 import Header from "../../components/Header";
-import { InputDefault } from "../../components/Input";
+import { InputDefault, InputPhone } from "../../components/Input";
 import { useCreateGuardianForm } from "../../hooks/useCreateGuardianForm";
 import { useRouter } from "expo-router";
 
@@ -43,17 +43,21 @@ export default function RegisterGuardians() {
                                 </View>
                             </View>
                             <View className="w-full flex flex-col items-center">
-                                <View className="w-full">
-                                    <Text className="font-subtitle text-xs">Telefone:</Text>
-                                    <Controller
-                                        control={control}
-                                        name="phone"
-                                        render={({ field: { onChange } }) => (
-                                            <InputDefault placeholder="Contato do guardião ..." onChangeText={onChange} />
-                                        )}
+                            <View className="w-full">
+                                <Text className="font-subtitle text-xs">Telefone:</Text>
+                                <Controller
+                                control={control}
+                                name="phone"
+                                render={({ field: { onChange, value } }) => (
+                                    <InputPhone
+                                    placeholder="Contato do guardião ..."
+                                    value={value}
+                                    onChangeText={onChange} // O `onChange` será chamado com o valor formatado
                                     />
-                                </View>
+                                )}
+                                />
                             </View>
+                        </View>
                         </View>
                         <ButtonDefaultReq 
                         onPress={handleSubmit(onSubmit)} 

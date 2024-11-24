@@ -4,6 +4,20 @@ import { useState } from "react";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
+export const formatPhone = (value: string) => {
+    return value
+      .replace(/\D/g, "") // Remove tudo que não é número
+      .replace(/^(\d{2})(\d)/, "($1) $2") // Adiciona parênteses ao redor do DDD e um espaço após
+      .replace(/(\d{1})(\d{4})(\d{4})$/, "$1 $2-$3") // Organiza os grupos após o DDD
+      .substr(0, 16); // Limita o tamanho total do telefone
+};
+export const removeCountryCode = (phone: string) => {
+    if (phone.startsWith("+55")) {
+      return phone.slice(3); // Remove os 3 primeiros caracteres (+55)
+    }
+    return phone; // Retorna o número como está, caso não tenha o +55
+};
+
 export function Input({...rest}: TextInputProps) {
     
 
@@ -49,6 +63,24 @@ export function InputPassword({...rest}: TextPasswordInputProps & TextInputProps
     )
 }
 
+
+export function InputPhone({ onChangeText, ...rest }: TextInputProps) {
+    const handleChange = (text: string) => {
+        const formatted = formatPhone(text);
+        if (onChangeText) {
+            onChangeText(formatted); 
+        }
+};
+    return (
+        <TextInput
+            {...rest}
+            className="bg-slate-100 w-[100%] px-4 p-4 text-lg rounded-2xl"
+            onChangeText={handleChange}
+        />
+    );
+}
+
+
 export function InputDefault({ placeholder,...rest}: InputProps & TextInputProps) {
     return (
         <TextInput
@@ -89,6 +121,6 @@ export function InputArea({ placeholder,...rest}: InputProps & TextInputProps) {
         numberOfLines={10}
         maxLength={60}
         placeholder={placeholder}
-      />
+    />
     )
 }
