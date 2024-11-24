@@ -79,16 +79,9 @@ export default function CallDetail() {
                         </>
                     ) : (
                     <View className="w-full mx-10 py-4 items-center justify-center mt-12">
-                        <Text className='py-5'>Realize a tratativa dessa solicitação:</Text>
-                        <TouchableOpacity
-                            onPress={()=>router.push({
-                                pathname: '/request_call_admin/[data]',
-                                params: {data: JSON.stringify(info)}
-                            })}
-                            className="bg-grayprimary flex flex-row py-3 px-5 justify-center w-full items-center gap-4 rounded-2xl"
-                        >
-                                <Text className="text-white text-base">Solicitar causa</Text>
-                        </TouchableOpacity>
+                        <Text className='py-5'>Sua causa está aguardando tratamento...</Text>
+                        <Text>
+                        </Text>
                     </View>
                     )
                 }

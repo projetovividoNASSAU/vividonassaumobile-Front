@@ -71,11 +71,14 @@ export default function HomeTab() {
               {
                 recentCall?(
                   <Call
+                    nameFun={recentCall.nameFun}
+                    user={recentCall.name}
                     title={recentCall.title}
                     description={recentCall.decricao}
-                    createdAt={''}
-                    type={''}
-                  />
+                    createdAt={recentCall.time}
+                    type={recentCall.type}
+                    callback={recentCall.callback}
+                />
                 ): (
                 <View className="w-full mx-10 py-4 items-center justify-center">
                   <Text className='py-5'>Você ainda não possui solicitações em aberto...</Text>

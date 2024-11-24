@@ -13,6 +13,9 @@ export default function Calls() {
   const { token } = useContext(AuthContext);
   const { data } = useGetCallsQuery(token);
   const router = useRouter();
+  const info = typeof data === 'string' ? JSON.parse(data) : null
+
+  console.log("dentro da pagina de chamadas: ",data)
 
   return (
     <>
@@ -41,11 +44,13 @@ export default function Calls() {
                 }
               >
                 <Call
+                  nameFun={item.nameFun}
+                  user={item.name}
                   title={item.title}
                   description={item.decricao}
                   createdAt={item.time}
                   type={item.type}
-                  status={true}
+                  callback={item.callback}
                 />
               </TouchableOpacity>
             )}
