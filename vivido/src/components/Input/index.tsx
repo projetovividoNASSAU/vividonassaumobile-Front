@@ -1,13 +1,51 @@
-import { TextInput, TextInputProps } from "react-native";
-import { InputProps } from "./input";
+import { TextInput, TextInputProps, TouchableOpacity, View } from "react-native";
+import { InputProps, TextPasswordInputProps } from "./input";
 import { useState } from "react";
+import AntDesign from '@expo/vector-icons/AntDesign';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export function Input({...rest}: TextInputProps) {
+    
+
     return (
         <TextInput
             {...rest}
             className="bg-sky-100 w-[100%] px-4 p-4 text-lg  rounded-2xl"
         />
+    )
+}
+
+export function InputPassword({...rest}: TextPasswordInputProps & TextInputProps) {
+    const [active, setActive] = useState(true)
+    return (
+        <View className="relative ">
+            <TextInput
+                {...rest}
+                secureTextEntry={active}
+                className="bg-sky-100 w-full px-4 p-4 text-lg rounded-2xl"
+            />
+            <TouchableOpacity
+                className="absolute right-4 top-1/2 -translate-y-1/2"
+                onPress={() => setActive(!active)}
+            >
+                {
+                    active ?
+                    (   
+                    <AntDesign
+                        className=" !text-redcherry"
+                        name="eyeo"
+                        size={24}
+                    />   
+                    ): (
+                        <FontAwesome5 
+                        name="eye-slash" 
+                        size={18} 
+                        className=" !text-redcherry" 
+                        />
+                    )
+                }
+            </TouchableOpacity>
+        </View>
     )
 }
 
@@ -30,7 +68,6 @@ export function InputUpdate({ placeholder,...rest}: InputProps & TextInputProps)
             numberOfLines={10}
             maxLength={400}
             className={`bg-slate-100 w-[100%]  p-4 text-lg rounded-2xl`}
-
             placeholder={placeholder}
         />
     )

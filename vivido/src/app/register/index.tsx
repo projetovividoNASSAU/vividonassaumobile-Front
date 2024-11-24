@@ -1,7 +1,7 @@
 import { View, Text, TouchableWithoutFeedback, Keyboard  } from "react-native";
 import TemplateLogo from "../../components/TemplateLogo";
 import useSignupForm from "../../hooks/useSignupForm";
-import {Input} from "../../components/Input";
+import {Input, InputPassword} from "../../components/Input";
 import { ButtonPrimary } from "../../components/Button";
 import Uninassau from "../../components/UninasauLogo";
 import Legand from "../../components/Legand";
@@ -18,7 +18,7 @@ export default function Register() {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View  className="flex-1 bg-white justify-center items-center mt-14">
                 <TemplateLogo legend="Registre-se"/>
-                <View className='w-[80%] flex flex-col gap-10 '>
+                <View className='w-[80%] flex flex-col gap-5 mt-10 '>
                     <View>
                         <Text className="font-subtitle">Nome Completo:</Text>
                         <Controller
@@ -49,7 +49,8 @@ export default function Register() {
                             control={control}
                             name="password"
                             render={({field: {onChange}}) => (
-                                <Input  
+                                <InputPassword
+                                    placeholder=""  
                                     onChangeText={onChange}
                                 />
                             )}
