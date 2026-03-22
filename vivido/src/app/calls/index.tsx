@@ -45,10 +45,10 @@ export default function Calls() {
               >
                 <Call
                   nameFun={item.nameFun}
-                  user={item.name}
-                  title={item.title}
-                  description={item.decricao}
-                  createdAt={item.time}
+                  user={item.userName ?? item.name ?? ''}
+                  title={item.title ?? item.titulo ?? ''}
+                  description={item.description ?? item.decricao ?? ''}
+                  createdAt={item.createdAt ?? item.time ?? ''}
                   type={item.type}
                   callback={item.callback}
                 />
